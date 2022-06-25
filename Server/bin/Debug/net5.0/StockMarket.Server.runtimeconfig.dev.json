@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\dea6th\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\dea6th\\.nuget\\packages"
+    ]
+  }
+}

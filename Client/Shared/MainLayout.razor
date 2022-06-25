@@ -1,0 +1,131 @@
+﻿@inherits LayoutComponentBase
+@using Syncfusion.Blazor.DropDowns
+@using Newtonsoft.Json
+@using StockMarket.Shared.Models
+
+
+<div class="main-menu">
+  <!--========== HEADER ==========-->
+  <header class="header">
+    <div class="header__container">
+      <img src="images/avatar.jpg" alt="" class="header__img">
+
+      <a href="/" class="header__logo">StockMarket</a>
+
+         <div class="header__search">
+            <SfAutoComplete TValue="string" TItem="TickerFields"  Placeholder="e.g. TSLA" DataSource="@_tickerFieldsList">
+                            <AutoCompleteFieldSettings Value="Text"></AutoCompleteFieldSettings>
+              </SfAutoComplete>
+         </div> 
+
+      <div class="header__toggle">
+        <i class='bx bx-menu' id="header-toggle"></i>
+      </div>
+    </div>
+  </header>
+
+  <!--========== NAV ==========-->
+  <div class="nav" id="navbar">
+    <nav class="nav__container">
+      <div>
+        <a href="#" class="nav__link nav__logo">
+          <i class='bx bxs-disc nav__icon'></i>
+          <span class="nav__logo-name">StockMarket</span>
+        </a>
+
+        <div class="nav__list">
+          <div class="nav__items">
+            <h3 class="nav__subtitle">Profile</h3>
+
+            <a href="#" class="nav__link active">
+              <i class='bx bx-home nav__icon'></i>
+              <span class="nav__name">Home</span>
+            </a>
+
+            <div class="nav__dropdown">
+              <a href="#" class="nav__link">
+                <i class='bx bx-user nav__icon'></i>
+                <span class="nav__name">Profile</span>
+                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+              </a>
+
+              <div class="nav__dropdown-collapse">
+                <div class="nav__dropdown-content">
+                  <a href="#" class="nav__dropdown-item">About</a>
+                  <a href="#" class="nav__dropdown-item">Settings</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="nav__items">
+            <h3 class="nav__subtitle">Menu</h3>
+
+            <a href="#" class="nav__link">
+              <i class='bx bx-news nav__icon'></i>
+              <span class="nav__name">News</span>
+            </a>
+            <a href="/Explore" class="nav__link">
+              <i class='bx bx-compass nav__icon'></i>
+              <span class="nav__name">Explore</span>
+            </a>
+            <a href="#" class="nav__link">
+              <i class='bx bx-bookmark nav__icon'></i>
+              <span class="nav__name">Saved</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="nav__link nav__logout">
+        <i class='bx bx-log-out nav__icon'></i>
+        <span class="nav__name">Log Out</span>
+      </a>
+    </nav>
+  </div>
+
+  <!--========== CONTENTS ==========-->
+  <main>
+    <section>
+      @Body
+    </section>
+  </main>
+</div>
+
+
+@code{
+    public class TickerFields
+    {
+        public int Id { get; set; }
+        public string Ticker { get; set; }
+    }
+
+  private List<TickerFields> _tickerFieldsList = new List<TickerFields>();
+
+  protected override async Task OnInitializedAsync()
+  {
+    
+    var API_KEY = "5NZpIQoLjjL1VNEANjr3EnNqQpWZw9yw";
+    var url = $"https://api.polygon.io/v3/reference/tickers?active=true&sort=ticker&order=asc&apiKey={API_KEY}"; 
+    
+    var httpClient = new HttpClient();
+    var result = await httpClient.GetAsync(url);
+    var data = await result.Content.ReadAsStringAsync();
+
+    var tickers = JsonConvert.DeserializeObject<List<Ticker>>(data);
+
+    var i = 0;
+    if (tickers != null)
+      foreach (var ticker in tickers)
+      {
+        _tickerFieldsList.Add(new TickerFields
+        {
+          Id = i++,
+          Ticker = ticker.TickerAbb
+        });
+      }
+  }
+}
+
+

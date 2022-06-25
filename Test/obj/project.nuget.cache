@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "mFSid9+Q6hFHzeRQJMeATjnki/UNstc9Z3YRpsY9mwllWdoKo6yzDrlxB1yxl7AqkcBt/ztjHjfhf3aS9mlldg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Test\\Test.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dea6th\\.nuget\\packages\\newtonsoft.json\\13.0.2-beta1\\newtonsoft.json.13.0.2-beta1.nupkg.sha512"
+  ],
+  "logs": []
+}
