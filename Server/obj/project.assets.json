@@ -787,7 +787,9 @@
           "Microsoft.AspNetCore.Authorization": "5.0.17",
           "Microsoft.AspNetCore.Components.WebAssembly": "5.0.0",
           "Microsoft.AspNetCore.Components.WebAssembly.Authentication": "5.0.17",
+          "Newtonsoft.Json": "13.0.2-beta1",
           "StockMarket.Shared": "1.0.0",
+          "Syncfusion.Blazor.Data": "20.1.0.60",
           "Syncfusion.Blazor.DropDowns": "20.1.0.60",
           "Syncfusion.Blazor.Layouts": "20.1.0.60",
           "Syncfusion.Blazor.Navigations": "20.1.0.60",
@@ -2248,37 +2250,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dea6th\\.nuget\\packages\\": {}
+    "C:\\Users\\maxim\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Server\\StockMarket.Server.csproj",
+      "projectUniqueName": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Server\\StockMarket.Server.csproj",
       "projectName": "StockMarket.Server",
-      "projectPath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Server\\StockMarket.Server.csproj",
-      "packagesPath": "C:\\Users\\dea6th\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Server\\obj\\",
+      "projectPath": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Server\\StockMarket.Server.csproj",
+      "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\dea6th\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\dea6th\\Desktop\\StockMarket\\Client\\StockMarket.Client.csproj": {
-              "projectPath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Client\\StockMarket.Client.csproj"
+            "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Client\\StockMarket.Client.csproj": {
+              "projectPath": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Client\\StockMarket.Client.csproj"
             },
-            "C:\\Users\\dea6th\\Desktop\\StockMarket\\Shared\\StockMarket.Shared.csproj": {
-              "projectPath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Shared\\StockMarket.Shared.csproj"
+            "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Shared\\StockMarket.Shared.csproj": {
+              "projectPath": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Shared\\StockMarket.Shared.csproj"
             }
           }
         }
@@ -2316,6 +2316,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.17, 5.0.17]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -2324,7 +2342,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\maxim\\.dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

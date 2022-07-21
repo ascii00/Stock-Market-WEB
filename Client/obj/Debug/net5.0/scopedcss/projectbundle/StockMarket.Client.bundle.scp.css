@@ -1,6 +1,23 @@
 @import '';
 
 /* /Pages/Index.razor.rz.scp.css */
+.main-text[b-ta8rplvoqy] {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+}
+
+.index_title[b-ta8rplvoqy] {
+    font-size: 25px;
+}
+
+.index_title_2[b-ta8rplvoqy] {
+    font-size: 15px;
+    color: black;
+}
+
+.index_title_3[b-ta8rplvoqy] {
+    font-size: 18px;
+}
 /* /Pages/Login.razor.rz.scp.css */
 /*===== VARIABLES CSS =====*/
 .login[b-5d5s82luv7]{
@@ -237,6 +254,21 @@ img[b-5d5s82luv7]{
         bottom: -5.5rem;
     }
 }
+/* /Pages/StockChart.razor.rz.scp.css */
+.StockChart_header[b-wq0icupby0] {
+    text-align: center;
+}
+.ulstyle[b-wq0icupby0] {
+    margin: 0px;
+    padding-left: 20px;
+    display: inline-block;
+}
+.list[b-wq0icupby0] {
+    float: left;
+    line-height: 20px;
+    margin: 10px;
+    min-width: 220px;
+}
 /* /Shared/MainLayout.razor.rz.scp.css */
 /*========== VARIABLES CSS ==========*/
 .main-menu[b-lplqdsbkxy] {
@@ -249,7 +281,7 @@ img[b-5d5s82luv7]{
     --title-color: #19181B;
     --text-color: #58555E;
     --text-color-light: #A5A1AA;
-    --body-color: #F9F6FD;
+    /*--body-color: #F9F6FD;*/
     --container-color: #FFFFFF;
 
     /*========== Font and typography ==========*/
@@ -284,7 +316,7 @@ img[b-5d5s82luv7]{
     padding: 1rem 1rem 0;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
-    background-color: var(--body-color);
+    /*background-color: var(--body-color);*/
     color: var(--text-color);
 }
 

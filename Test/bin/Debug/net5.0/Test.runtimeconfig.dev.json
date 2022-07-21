@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\dea6th\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\dea6th\\.nuget\\packages"
+      "C:\\Users\\maxim\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\maxim\\.nuget\\packages"
     ]
   }
 }

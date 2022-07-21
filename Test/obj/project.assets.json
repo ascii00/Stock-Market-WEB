@@ -51,26 +51,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dea6th\\.nuget\\packages\\": {}
+    "C:\\Users\\maxim\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Test\\Test.csproj",
+      "projectUniqueName": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Test\\Test.csproj",
       "projectName": "Test",
-      "projectPath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Test\\Test.csproj",
-      "packagesPath": "C:\\Users\\dea6th\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Test\\obj\\",
+      "projectPath": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Test\\Test.csproj",
+      "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\dea6th\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -104,12 +102,30 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.17, 5.0.17]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\maxim\\.dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

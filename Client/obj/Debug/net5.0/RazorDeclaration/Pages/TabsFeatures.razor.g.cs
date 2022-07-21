@@ -13,98 +13,98 @@ namespace StockMarket.Client.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 1 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 2 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 3 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 4 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 5 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 6 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 7 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 8 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 9 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using StockMarket.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 10 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using StockMarket.Client.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 11 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Syncfusion.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 12 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using StockMarket.Client.Components;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 13 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\dea6th\Desktop\StockMarket\Client\Pages\TabsFeatures.razor"
+#line 2 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Pages\TabsFeatures.razor"
 using Syncfusion.Blazor.Navigations;
 
 #line default
@@ -119,7 +119,7 @@ using Syncfusion.Blazor.Navigations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 80 "C:\Users\dea6th\Desktop\StockMarket\Client\Pages\TabsFeatures.razor"
+#line 81 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Pages\TabsFeatures.razor"
       
     public string Content1 = "Twitter is an online social networking service that enables users to send and read short 140-character" +
                 "messages called tweets.Registered users can read and post tweets, but those who are unregistered can only read" +

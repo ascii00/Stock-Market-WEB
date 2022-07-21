@@ -13,113 +13,127 @@ namespace StockMarket.Client.Shared
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 1 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 2 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 3 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 4 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 5 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 6 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 7 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 8 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 9 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using StockMarket.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 10 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using StockMarket.Client.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 11 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Syncfusion.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 12 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using StockMarket.Client.Components;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 13 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\dea6th\Desktop\StockMarket\Client\Shared\MainLayout.razor"
+#line 2 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Shared\MainLayout.razor"
 using Syncfusion.Blazor.DropDowns;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\dea6th\Desktop\StockMarket\Client\Shared\MainLayout.razor"
+#line 3 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Shared\MainLayout.razor"
 using Newtonsoft.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\dea6th\Desktop\StockMarket\Client\Shared\MainLayout.razor"
-using StockMarket.Shared.Models;
+#line 4 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Shared\MainLayout.razor"
+using Microsoft.VisualBasic;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Shared\MainLayout.razor"
+using Newtonsoft.Json.Linq;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Shared\MainLayout.razor"
+using System.Net;
 
 #line default
 #line hidden
@@ -132,43 +146,96 @@ using StockMarket.Shared.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 97 "C:\Users\dea6th\Desktop\StockMarket\Client\Shared\MainLayout.razor"
+#line 102 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Shared\MainLayout.razor"
       
-    public class TickerFields
-    {
-        public int Id { get; set; }
-        public string Ticker { get; set; }
-    }
-
-  private List<TickerFields> _tickerFieldsList = new List<TickerFields>();
-
-  protected override async Task OnInitializedAsync()
+  
+  public class TickerFields
   {
-    
-    var API_KEY = "5NZpIQoLjjL1VNEANjr3EnNqQpWZw9yw";
-    var url = $"https://api.polygon.io/v3/reference/tickers?active=true&sort=ticker&order=asc&apiKey={API_KEY}"; 
-    
-    var httpClient = new HttpClient();
-    var result = await httpClient.GetAsync(url);
-    var data = await result.Content.ReadAsStringAsync();
+    public int Id { get; set; }
+    public string Ticker { get; set; }
+  }
+  
+  public List<TickerFields> Tickers = new()
+  {
+    new TickerFields(){Id = 0, Ticker = "TSLA"},
+    new TickerFields(){Id = 0, Ticker = "AAPL"},
+  };
+  
+  private void OnValueSelectHandler(SelectEventArgs<TickerFields> args)
+  {
+    NavigationManager.NavigateTo("stockchart/"+args.ItemData.Ticker);
+  }
+  
+  
+  
+  
+  //
+  // Добавить источник тикеров - база данных
+  //
 
-    var tickers = JsonConvert.DeserializeObject<List<Ticker>>(data);
-
-    var i = 0;
-    if (tickers != null)
-      foreach (var ticker in tickers)
-      {
-        _tickerFieldsList.Add(new TickerFields
-        {
-          Id = i++,
-          Ticker = ticker.TickerAbb
-        });
-      }
+  private void OnInput(string args)
+  {
+  // var task = UpdateElementsAsync(args);
+  // task.Wait();
+  // }
+  //
+  // readonly HttpClient _httpClient = new();
+  //
+  // private async Task UpdateElementsAsync(string input)
+  // {
+  //   var API_KEY = "5qE_p3Fmv5g5FC9FLXxiiT1OsAszFMdD";
+  //   var url = $"https://api.polygon.io/v3/reference/tickers?active=true&sort=ticker&order=asc&ticker.gte={input}&ticker.lte=Z&limit=10&apiKey={API_KEY}"; 
+  //   
+  //   var i = 0;
+  //   
+  //   var result = await _httpClient.GetAsync(url);
+  //   if (!result.IsSuccessStatusCode) return;
+  //   
+  //   var data = await result.Content.ReadAsStringAsync();
+  //   var json = JObject.Parse(data);
+  //   var tickers = json["results"]
+  //     .Select(token => token["ticker"].Value<string>())
+  //     .ToArray();
+  //   Tickers.AddRange(tickers.Select(ticker => new TickerFields {Id = i++, Ticker = ticker}));
+  //   
+  //   foreach (var ticker in Tickers)
+  //   {
+  //     Console.WriteLine(ticker.Id + " " + ticker.Ticker);
+  //   }
+  // }
+  //
+  // public class Ticker
+  // {
+  //   [JsonProperty("ticker")]
+  //   public string TickerName { get; set; }
+  //   [JsonProperty("name")]
+  //   public string Name { get; set; }
+  //   [JsonProperty("market")]
+  //   public string Market { get; set; }
+  //   [JsonProperty("locale")]
+  //   public string Locale { get; set; }
+  //   [JsonProperty("primary_exchange")]
+  //   public string PrimaryExchange { get; set; }
+  //   [JsonProperty("type")]
+  //   public string Type { get; set; }
+  //   [JsonProperty("active")]
+  //   public bool Active { get; set; }
+  //   [JsonProperty("currency_name")]
+  //   public string CurrencyName { get; set; }
+  //   [JsonProperty("cik")]
+  //   public string Cik { get; set; }
+  //   [JsonProperty("composite_figi")]
+  //   public string CompositeFigi { get; set; }
+  //   [JsonProperty("share_class_figi")]
+  //   public string ShareClassFigi { get; set; }
+  //   [JsonProperty("last_updated_utc")]
+  //   public DateFormat LastUpdatedUtc { get; set; }
   }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

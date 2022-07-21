@@ -1,7 +1,11 @@
 ﻿@inherits LayoutComponentBase
 @using Syncfusion.Blazor.DropDowns
 @using Newtonsoft.Json
-@using StockMarket.Shared.Models
+@using Microsoft.VisualBasic;
+@using Newtonsoft.Json.Linq
+@using System.Net
+@inject NavigationManager NavigationManager
+
 
 
 <div class="main-menu">
@@ -12,11 +16,12 @@
 
       <a href="/" class="header__logo">StockMarket</a>
 
-         <div class="header__search">
-            <SfAutoComplete TValue="string" TItem="TickerFields"  Placeholder="e.g. TSLA" DataSource="@_tickerFieldsList">
-                            <AutoCompleteFieldSettings Value="Text"></AutoCompleteFieldSettings>
-              </SfAutoComplete>
-         </div> 
+      <div class="header__search">
+        <SfAutoComplete TValue="string" TItem="TickerFields" @oninput="@( e => { if (e.Value != null) { OnInput(e.Value.ToString()); } })" Placeholder="e.g. TSLA" DataSource="@Tickers">
+          <AutoCompleteEvents TItem="TickerFields" TValue="string" OnValueSelect="@OnValueSelectHandler"></AutoCompleteEvents>
+          <AutoCompleteFieldSettings Value="Ticker"></AutoCompleteFieldSettings>
+        </SfAutoComplete>
+      </div>
 
       <div class="header__toggle">
         <i class='bx bx-menu' id="header-toggle"></i>
@@ -28,7 +33,7 @@
   <div class="nav" id="navbar">
     <nav class="nav__container">
       <div>
-        <a href="#" class="nav__link nav__logo">
+        <a href="" class="nav__link nav__logo">
           <i class='bx bxs-disc nav__icon'></i>
           <span class="nav__logo-name">StockMarket</span>
         </a>
@@ -37,7 +42,7 @@
           <div class="nav__items">
             <h3 class="nav__subtitle">Profile</h3>
 
-            <a href="#" class="nav__link active">
+            <a href="" class="nav__link active">
               <i class='bx bx-home nav__icon'></i>
               <span class="nav__name">Home</span>
             </a>
@@ -87,7 +92,7 @@
 
   <!--========== CONTENTS ==========-->
   <main>
-    <section>
+    <section class="body-section">
       @Body
     </section>
   </main>
@@ -95,36 +100,88 @@
 
 
 @code{
-    public class TickerFields
-    {
-        public int Id { get; set; }
-        public string Ticker { get; set; }
-    }
-
-  private List<TickerFields> _tickerFieldsList = new List<TickerFields>();
-
-  protected override async Task OnInitializedAsync()
+  
+  public class TickerFields
   {
-    
-    var API_KEY = "5NZpIQoLjjL1VNEANjr3EnNqQpWZw9yw";
-    var url = $"https://api.polygon.io/v3/reference/tickers?active=true&sort=ticker&order=asc&apiKey={API_KEY}"; 
-    
-    var httpClient = new HttpClient();
-    var result = await httpClient.GetAsync(url);
-    var data = await result.Content.ReadAsStringAsync();
+    public int Id { get; set; }
+    public string Ticker { get; set; }
+  }
+  
+  public List<TickerFields> Tickers = new()
+  {
+    new TickerFields(){Id = 0, Ticker = "TSLA"},
+    new TickerFields(){Id = 0, Ticker = "AAPL"},
+  };
+  
+  private void OnValueSelectHandler(SelectEventArgs<TickerFields> args)
+  {
+    NavigationManager.NavigateTo("stockchart/"+args.ItemData.Ticker);
+  }
+  
+  
+  
+  
+  //
+  // Добавить источник тикеров - база данных
+  //
 
-    var tickers = JsonConvert.DeserializeObject<List<Ticker>>(data);
-
-    var i = 0;
-    if (tickers != null)
-      foreach (var ticker in tickers)
-      {
-        _tickerFieldsList.Add(new TickerFields
-        {
-          Id = i++,
-          Ticker = ticker.TickerAbb
-        });
-      }
+  private void OnInput(string args)
+  {
+  // var task = UpdateElementsAsync(args);
+  // task.Wait();
+  // }
+  //
+  // readonly HttpClient _httpClient = new();
+  //
+  // private async Task UpdateElementsAsync(string input)
+  // {
+  //   var API_KEY = "5qE_p3Fmv5g5FC9FLXxiiT1OsAszFMdD";
+  //   var url = $"https://api.polygon.io/v3/reference/tickers?active=true&sort=ticker&order=asc&ticker.gte={input}&ticker.lte=Z&limit=10&apiKey={API_KEY}"; 
+  //   
+  //   var i = 0;
+  //   
+  //   var result = await _httpClient.GetAsync(url);
+  //   if (!result.IsSuccessStatusCode) return;
+  //   
+  //   var data = await result.Content.ReadAsStringAsync();
+  //   var json = JObject.Parse(data);
+  //   var tickers = json["results"]
+  //     .Select(token => token["ticker"].Value<string>())
+  //     .ToArray();
+  //   Tickers.AddRange(tickers.Select(ticker => new TickerFields {Id = i++, Ticker = ticker}));
+  //   
+  //   foreach (var ticker in Tickers)
+  //   {
+  //     Console.WriteLine(ticker.Id + " " + ticker.Ticker);
+  //   }
+  // }
+  //
+  // public class Ticker
+  // {
+  //   [JsonProperty("ticker")]
+  //   public string TickerName { get; set; }
+  //   [JsonProperty("name")]
+  //   public string Name { get; set; }
+  //   [JsonProperty("market")]
+  //   public string Market { get; set; }
+  //   [JsonProperty("locale")]
+  //   public string Locale { get; set; }
+  //   [JsonProperty("primary_exchange")]
+  //   public string PrimaryExchange { get; set; }
+  //   [JsonProperty("type")]
+  //   public string Type { get; set; }
+  //   [JsonProperty("active")]
+  //   public bool Active { get; set; }
+  //   [JsonProperty("currency_name")]
+  //   public string CurrencyName { get; set; }
+  //   [JsonProperty("cik")]
+  //   public string Cik { get; set; }
+  //   [JsonProperty("composite_figi")]
+  //   public string CompositeFigi { get; set; }
+  //   [JsonProperty("share_class_figi")]
+  //   public string ShareClassFigi { get; set; }
+  //   [JsonProperty("last_updated_utc")]
+  //   public DateFormat LastUpdatedUtc { get; set; }
   }
 }
 

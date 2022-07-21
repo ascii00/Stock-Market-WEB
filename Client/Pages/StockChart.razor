@@ -1,0 +1,39 @@
+﻿@page "/stockchart/{Ticker}"
+@using Syncfusion.Blazor.Charts
+@using StockMarket.Shared.Models
+@inject HttpClient Http;
+
+<br/>
+<h3 class="StockChart_header">@Ticker Stock Price </h3>
+<br/>
+
+@if (StockChartDetails == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div id="ControlRegion">
+
+        
+        <SfStockChart Title="Stock Price" Theme="Theme.Fluent" EnablePeriodSelector="true" EnableSelector="true">
+            <StockChartSeriesCollection>
+                <StockChartSeries DataSource="@StockChartDetails" Type="ChartSeriesType.Line" XName="Date" YName="Open"
+                                  High="High" Low="Low" Open="Open" Close="Close" Volume="Volume" Name="Google">
+                </StockChartSeries>
+            </StockChartSeriesCollection>
+        </SfStockChart>
+        
+
+    </div>
+}
+
+@code {
+    [Parameter] public string Ticker{ get; set; }
+    StockChartData[] StockChartDetails;
+
+    protected override async Task OnInitializedAsync()
+    {
+        StockChartDetails = await Http.GetJsonAsync<StockChartData[]>($"StockChart/{Ticker}");
+    }
+}

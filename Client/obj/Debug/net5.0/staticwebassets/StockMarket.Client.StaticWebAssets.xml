@@ -1,20 +1,20 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication" Path="C:\Users\dea6th\.nuget\packages\microsoft.aspnetcore.components.webassembly.authentication\5.0.17\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Calendars" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.calendars\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Charts" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.charts\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Core" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.core\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Data" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.data\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.DropDowns" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.dropdowns\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Inputs" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.inputs\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Layouts" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.layouts\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Lists" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.lists\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Navigations" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.navigations\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Popups" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.popups\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.RangeNavigator" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.rangenavigator\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Spinner" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.spinner\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.SplitButtons" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.splitbuttons\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.StockChart" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.stockchart\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor.Themes" Path="C:\Users\dea6th\.nuget\packages\syncfusion.blazor.themes\20.1.0.60\build\..\staticwebassets\" />
-  <ContentRoot BasePath="/" Path="C:\Users\dea6th\Desktop\StockMarket\Client\bin\Debug\net5.0\wwwroot\" />
-  <ContentRoot BasePath="/" Path="C:\Users\dea6th\Desktop\StockMarket\Client\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication" Path="C:\Users\maxim\.nuget\packages\microsoft.aspnetcore.components.webassembly.authentication\5.0.17\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Calendars" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.calendars\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Charts" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.charts\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Core" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.core\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Data" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.data\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.DropDowns" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.dropdowns\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Inputs" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.inputs\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Layouts" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.layouts\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Lists" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.lists\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Navigations" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.navigations\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Popups" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.popups\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.RangeNavigator" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.rangenavigator\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Spinner" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.spinner\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.SplitButtons" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.splitbuttons\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.StockChart" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.stockchart\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor.Themes" Path="C:\Users\maxim\.nuget\packages\syncfusion.blazor.themes\20.1.0.60\build\..\staticwebassets\" />
+  <ContentRoot BasePath="/" Path="C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\bin\Debug\net5.0\wwwroot\" />
+  <ContentRoot BasePath="/" Path="C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\obj\Debug\net5.0\scopedcss\bundle\" />
 </StaticWebAssets>

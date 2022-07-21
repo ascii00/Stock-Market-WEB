@@ -16,6 +16,18 @@
           "lib/net5.0/Microsoft.AspNetCore.Authorization.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Blazor.HttpClient/3.0.0-preview9.19465.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Json": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.HttpClient.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.HttpClient.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Components/5.0.17": {
         "type": "package",
         "dependencies": {
@@ -798,6 +810,18 @@
         },
         "runtime": {
           "lib/net5.0/Microsoft.AspNetCore.Authorization.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Blazor.HttpClient/3.0.0-preview9.19465.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Json": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.HttpClient.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.HttpClient.dll": {}
         }
       },
       "Microsoft.AspNetCore.Components/5.0.17": {
@@ -1588,6 +1612,19 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.xml",
         "microsoft.aspnetcore.authorization.5.0.17.nupkg.sha512",
         "microsoft.aspnetcore.authorization.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Blazor.HttpClient/3.0.0-preview9.19465.2": {
+      "sha512": "VXdxidSaMeNdODoFRkRDaeFmPxnaYSSF2ElWgpJd4CoUm1sHACqyEKml62uQGcCMEgpEkZz+JZptDOz6elxPHQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.blazor.httpclient/3.0.0-preview9.19465.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Blazor.HttpClient.dll",
+        "microsoft.aspnetcore.blazor.httpclient.3.0.0-preview9.19465.2.nupkg.sha512",
+        "microsoft.aspnetcore.blazor.httpclient.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Components/5.0.17": {
@@ -3004,10 +3041,13 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "Microsoft.AspNetCore.Authorization >= 5.0.17",
+      "Microsoft.AspNetCore.Blazor.HttpClient >= 3.0.0-preview9.19465.2",
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly.Authentication >= 5.0.17",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 5.0.0",
+      "Newtonsoft.Json >= 13.0.2-beta1",
       "StockMarket.Shared >= 1.0.0",
+      "Syncfusion.Blazor.Data >= 20.1.0.60",
       "Syncfusion.Blazor.DropDowns >= 20.1.0.60",
       "Syncfusion.Blazor.Layouts >= 20.1.0.60",
       "Syncfusion.Blazor.Navigations >= 20.1.0.60",
@@ -3017,34 +3057,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dea6th\\.nuget\\packages\\": {}
+    "C:\\Users\\maxim\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Client\\StockMarket.Client.csproj",
+      "projectUniqueName": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Client\\StockMarket.Client.csproj",
       "projectName": "StockMarket.Client",
-      "projectPath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Client\\StockMarket.Client.csproj",
-      "packagesPath": "C:\\Users\\dea6th\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Client\\obj\\",
+      "projectPath": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Client\\StockMarket.Client.csproj",
+      "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\dea6th\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\dea6th\\Desktop\\StockMarket\\Shared\\StockMarket.Shared.csproj": {
-              "projectPath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Shared\\StockMarket.Shared.csproj"
+            "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Shared\\StockMarket.Shared.csproj": {
+              "projectPath": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Shared\\StockMarket.Shared.csproj"
             }
           }
         }
@@ -3063,6 +3101,11 @@
             "target": "Package",
             "version": "[5.0.17, )"
           },
+          "Microsoft.AspNetCore.Blazor.HttpClient": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[3.0.0-preview9.19465.2, )"
+          },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
             "version": "[5.0.0, )"
@@ -3075,6 +3118,14 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[5.0.0, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.2-beta1, )"
+          },
+          "Syncfusion.Blazor.Data": {
+            "target": "Package",
+            "version": "[20.1.0.60, )"
           },
           "Syncfusion.Blazor.DropDowns": {
             "target": "Package",
@@ -3113,8 +3164,20 @@
         "warn": true,
         "downloadDependencies": [
           {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
             "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
             "version": "[5.0.17, 5.0.17]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
           }
         ],
         "frameworkReferences": {
@@ -3122,7 +3185,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\maxim\\.dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

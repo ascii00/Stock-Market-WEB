@@ -1,0 +1,14 @@
+﻿.StockChart_header {
+    text-align: center;
+}
+.ulstyle {
+    margin: 0px;
+    padding-left: 20px;
+    display: inline-block;
+}
+.list {
+    float: left;
+    line-height: 20px;
+    margin: 10px;
+    min-width: 220px;
+}

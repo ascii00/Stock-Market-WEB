@@ -13,98 +13,98 @@ namespace StockMarket.Client.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 1 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 2 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 3 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 4 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 5 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 6 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 7 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 8 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 9 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using StockMarket.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 10 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using StockMarket.Client.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 11 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Syncfusion.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 12 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using StockMarket.Client.Components;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\dea6th\Desktop\StockMarket\Client\_Imports.razor"
+#line 13 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\dea6th\Desktop\StockMarket\Client\Pages\DashboardLayoutFeatures.razor"
+#line 2 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Pages\DashboardLayoutFeatures.razor"
 using Syncfusion.Blazor.Layouts;
 
 #line default
@@ -119,7 +119,7 @@ using Syncfusion.Blazor.Layouts;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 87 "C:\Users\dea6th\Desktop\StockMarket\Client\Pages\DashboardLayoutFeatures.razor"
+#line 87 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Pages\DashboardLayoutFeatures.razor"
        
     SfDashboardLayout dashboardObject;
     public int Count = 9;
@@ -143,7 +143,7 @@ using Syncfusion.Blazor.Layouts;
             __builder2.AddAttribute(1, "class", "text-align");
             __builder2.AddContent(2, " Panel ");
 #nullable restore
-#line 100 "C:\Users\dea6th\Desktop\StockMarket\Client\Pages\DashboardLayoutFeatures.razor"
+#line 100 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Pages\DashboardLayoutFeatures.razor"
 __builder2.AddContent(3, ContentValue);
 
 #line default
@@ -154,7 +154,7 @@ __builder2.AddContent(3, ContentValue);
             __builder2.AddMarkupContent(5, "\r\n");
         }
 #nullable restore
-#line 101 "C:\Users\dea6th\Desktop\StockMarket\Client\Pages\DashboardLayoutFeatures.razor"
+#line 101 "C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Client\Pages\DashboardLayoutFeatures.razor"
         };
         await dashboardObject.AddPanelAsync(panel);
         this.Count = this.Count + 1;

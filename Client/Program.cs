@@ -31,11 +31,11 @@ namespace StockMarket.Client
 
         public class TokenAuthenticationProvider : AuthenticationStateProvider
         {
-            public override async Task<AuthenticationState> GetAuthenticationStateAsync()
+            public override Task<AuthenticationState> GetAuthenticationStateAsync()
             {
                 var anonymousIdentity = new ClaimsIdentity();
                 var anonymousPrincipal = new ClaimsPrincipal(anonymousIdentity);
-                return new AuthenticationState(anonymousPrincipal);
+                return Task.FromResult(new AuthenticationState(anonymousPrincipal));
             }
         }
     }

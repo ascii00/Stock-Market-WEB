@@ -29,6 +29,5 @@ namespace StockMarket.Shared.Models
         public string ShareClassFigi { get; set; }
         [JsonProperty("last_updated_utc")]
         public DateFormat LastUpdatedUtc { get; set; }
-        
     }
 }

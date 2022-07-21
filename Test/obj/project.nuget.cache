@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "mFSid9+Q6hFHzeRQJMeATjnki/UNstc9Z3YRpsY9mwllWdoKo6yzDrlxB1yxl7AqkcBt/ztjHjfhf3aS9mlldg==",
+  "dgSpecHash": "yyY+7ljswwaHoI6bWCs5PsM35NjKz3nopSo2Pn9ZFMMH9bDRctJYOemvy4Wq4caaxx6Kvb8OyKxAZoIyDA+D9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dea6th\\Desktop\\StockMarket\\Test\\Test.csproj",
+  "projectFilePath": "C:\\Users\\maxim\\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\\Desktop\\StockMarket\\Test\\Test.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\dea6th\\.nuget\\packages\\newtonsoft.json\\13.0.2-beta1\\newtonsoft.json.13.0.2-beta1.nupkg.sha512"
+    "C:\\Users\\maxim\\.nuget\\packages\\newtonsoft.json\\13.0.2-beta1\\newtonsoft.json.13.0.2-beta1.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
   ],
   "logs": []
 }

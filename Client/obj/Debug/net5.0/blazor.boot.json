@@ -8,6 +8,7 @@
   "resources": {
     "assembly": {
       "Microsoft.AspNetCore.Authorization.dll": "sha256-5QpvlVP++Gkc1dR8QwljPr2My0TdN\/zMkNik9vPVNxk=",
+      "Microsoft.AspNetCore.Blazor.HttpClient.dll": "sha256-6Cd0kK\/XmPsHChsovtSsrQc+2PSj2PDIEl9+KrZfwb0=",
       "Microsoft.AspNetCore.Components.dll": "sha256-lIaWNwfsw4JmImsjOS8Y60om1ZDgL2CTkBB+RmJPCgk=",
       "Microsoft.AspNetCore.Components.Authorization.dll": "sha256-5apeA7T7v8KLvrMs41SJz4kPdAsLU+eJ+oJ1RbvvR70=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-RA8PrAgd0Srd27z2Nw+t5X4AGrsOq2zTT9OuXAOuO1Q=",
@@ -217,15 +218,15 @@
       "mscorlib.dll": "sha256-zMI\/dXK7DoZZ9Qm9U9\/jRN4iQ9Ss3w8\/rwQQxC6SW9Y=",
       "netstandard.dll": "sha256-W3q3PN+lpRB+tRJEIhtMgYOGFv0pauEeeCS9iIRkKAM=",
       "System.Private.CoreLib.dll": "sha256-9rUJv1mXEQdGt\/kWiJ1ITPPzp3cAi3lSmqHVTisp7w0=",
-      "StockMarket.Shared.dll": "sha256-iWP9xiRkGoY2+PqGpfcnVmlUrG6iwDTR5AIy+h5lKgc=",
-      "StockMarket.Client.dll": "sha256-S52mM+t2ULUGgpMCo189YwgKo2Q35a5\/+W6NRrBIqMI="
+      "StockMarket.Shared.dll": "sha256-XyNSg1PEoKLA\/5ZMx0jc8y1nLWrvbk44SPNksZp0cpU=",
+      "StockMarket.Client.dll": "sha256-zYk8EThR2hIgOWwKK4MreCClmlFS2+SIlCEBmEuhRLc="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "StockMarket.Shared.pdb": "sha256-23UOJ5pk2nBsESRmQvBtbS3D0rKGuQiaaPDvKEDQlns=",
-      "StockMarket.Client.pdb": "sha256-SwmsTpVjGX7e673HAl8zXqUSEiNkj9b49bivAmy5Ywk="
+      "StockMarket.Shared.pdb": "sha256-r4G1nn0U8G+IDrEh7TqhBDXmK9ECK4DaNdsiguhm7TE=",
+      "StockMarket.Client.pdb": "sha256-fbgxlZY\/xsMNi\/R5Rsnz7jKDtN2bMlusc2VNqbHEvxA="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-8oJip361m8OrfLRJOuIeswWKaoxtT27\/wINCxhn+s4c=",

@@ -9,7 +9,7 @@
     --title-color: #19181B;
     --text-color: #58555E;
     --text-color-light: #A5A1AA;
-    --body-color: #F9F6FD;
+    /*--body-color: #F9F6FD;*/
     --container-color: #FFFFFF;
 
     /*========== Font and typography ==========*/
@@ -44,7 +44,7 @@
     padding: 1rem 1rem 0;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
-    background-color: var(--body-color);
+    /*background-color: var(--body-color);*/
     color: var(--text-color);
 }
 

@@ -10,3 +10,15 @@ C:\Users\dea6th\Desktop\StockMarket\Shared\obj\Debug\net5.0\StockMarket.Shared.d
 C:\Users\dea6th\Desktop\StockMarket\Shared\obj\Debug\net5.0\refint\StockMarket.Shared.dll
 C:\Users\dea6th\Desktop\StockMarket\Shared\obj\Debug\net5.0\StockMarket.Shared.pdb
 C:\Users\dea6th\Desktop\StockMarket\Shared\obj\Debug\net5.0\ref\StockMarket.Shared.dll
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\bin\Debug\net5.0\StockMarket.Shared.deps.json
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\bin\Debug\net5.0\StockMarket.Shared.dll
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\bin\Debug\net5.0\StockMarket.Shared.pdb
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\obj\Debug\net5.0\StockMarket.Shared.csproj.AssemblyReference.cache
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\obj\Debug\net5.0\StockMarket.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\obj\Debug\net5.0\StockMarket.Shared.AssemblyInfoInputs.cache
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\obj\Debug\net5.0\StockMarket.Shared.AssemblyInfo.cs
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\obj\Debug\net5.0\StockMarket.Shared.csproj.CoreCompileInputs.cache
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\obj\Debug\net5.0\StockMarket.Shared.dll
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\obj\Debug\net5.0\refint\StockMarket.Shared.dll
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\obj\Debug\net5.0\StockMarket.Shared.pdb
+C:\Users\maxim\OneDrive - Polsko-Japońska Akademia Technik Komputerowych\Desktop\StockMarket\Shared\obj\Debug\net5.0\ref\StockMarket.Shared.dll

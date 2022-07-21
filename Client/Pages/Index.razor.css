@@ -1,1 +1,17 @@
-﻿
+﻿.main-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+}
+
+.index_title {
+    font-size: 25px;
+}
+
+.index_title_2 {
+    font-size: 15px;
+    color: black;
+}
+
+.index_title_3 {
+    font-size: 18px;
+}
