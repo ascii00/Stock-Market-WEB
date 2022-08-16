@@ -1,0 +1,83 @@
+﻿@page "/login"
+@layout EmptyLayout
+
+<div class="login">
+    <div class="login__content">
+        <div class="login__img">
+            <img src="https://raw.githubusercontent.com/valekutce/form8-elements/488f8743c5f18b60595cae7843bcc00ada5f37a7/assets/img/img-login.svg" alt="">
+        </div>
+
+        <div class="login__forms">
+            <form action="" class="@_loginClass" id="login-in">
+                <h1 class="login__title">Sign In</h1>
+
+                <div class="login__box">
+                    <i class='bx bx-user login__icon'></i>
+                    <input type="text" placeholder="Username" class="login__input">
+                </div>
+
+                <div class="login__box">
+                    <i class='bx bx-lock-alt login__icon'></i>
+                    <input type="password" placeholder="Password" class="login__input">
+                </div>
+
+                <a href="/" class="login__button">Sign In</a>
+
+                <div>
+                    <span class="login__account">Don't have an Account?</span>
+                    <button type="button" class="login__signin" @onclick="ChangeLoginType">Sign Up</button>
+                </div>
+            </form>
+
+            <form action="" class="@_registerClass" id="login-up">
+                <h1 class="login__title">Create Account</h1>
+
+                <div class="login__box">
+                    <i class='bx bx-user login__icon'></i>
+                    <input type="text" placeholder="Username" class="login__input">
+                </div>
+
+                <div class="login__box">
+                    <i class='bx bx-at login__icon'></i>
+                    <input type="text" placeholder="Email" class="login__input">
+                </div>
+
+                <div class="login__box">
+                    <i class='bx bx-lock-alt login__icon'></i>
+                    <input type="password" placeholder="Password" class="login__input">
+                </div>
+
+                <a href="/" class="login__button">Sign Up</a>
+
+                <div>
+                    <span class="login__account">Already have an Account?</span>
+                    <button type="button" class="login__signup" @onclick="ChangeLoginType">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@code{
+
+    private string _registerClass = "login__create none";
+    private string _loginClass = "login__registre";
+    private bool _isLogin = true;
+     
+
+    private void ChangeLoginType()
+    {
+        if (_isLogin)
+        {
+            _registerClass = "login__create";
+            _loginClass = "login__registre none";
+            _isLogin = false;
+        }
+        else
+        {
+            _registerClass = "login__create none";
+            _loginClass = "login__registre";
+            _isLogin = true;
+        }
+    }
+}

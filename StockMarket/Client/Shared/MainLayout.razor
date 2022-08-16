@@ -1,0 +1,155 @@
+﻿@inherits LayoutComponentBase
+@using StockMarket.Shared.Models
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inject NavigationManager NavigationManager
+@inject HttpClient Http;
+@inject NavigationManager Navigation
+@inject SignOutSessionStateManager SignOutManager
+
+<div class="main-menu">
+  <!--========== HEADER ==========-->
+  <header class="header">
+    <div class="header__container">
+      <img src="images/logo.png" alt="" class="header__img">
+      
+      <div class="header__userName">
+        <AuthorizeView>
+          <Authorized>
+            <p>@context.User.Identity?.Name</p>
+          </Authorized>
+        </AuthorizeView>
+      </div>
+
+      <div class="header__search">
+        <SfAutoComplete TValue="string" TItem="Ticker" Placeholder="e.g. TSLA" EnableVirtualization="true" DataSource="@_tickers">
+          <AutoCompleteTemplates TItem="Ticker">
+            <ItemTemplate> 
+              <span><span class="autocomplete_ticker">@context.TickerSymbol</span><span class="autocomplete_name">@context.Name</span></span>
+            </ItemTemplate>
+          </AutoCompleteTemplates>
+          <AutoCompleteEvents TItem="Ticker" TValue="string" OnValueSelect="@OnValueSelectHandler"></AutoCompleteEvents>
+          <AutoCompleteFieldSettings Value="TickerSymbol"></AutoCompleteFieldSettings>
+        </SfAutoComplete>
+      </div>
+
+      <div class="header__toggle">
+        <i class='bx bx-menu' id="header-toggle" @onclick="ChangeNavClass"></i>
+      </div>
+    </div>
+  </header>
+
+  <!--========== NAV ==========-->
+  <div class="@_navClass" id="navbar">
+    <nav class="nav__container">
+      <div>
+        <a href="" class="nav__link nav__logo">
+          <i class='bx bxs-disc nav__icon'></i>
+          <span class="nav__logo-name">StockMarket</span>
+        </a>
+
+        <div class="nav__list">
+          <div class="nav__items">
+            <h3 class="nav__subtitle">Profile</h3>
+
+            <a href="/" class="@NavMenuHelper.SectionHome">
+              <i class='bx bx-home nav__icon'></i>
+              <span class="nav__name" @onclick="@(_ => NavMenuHelper.ChangeActiveSection("Home"))">Home</span>
+            </a>
+
+            <div class="nav__dropdown">
+              <a href="/about" class="@NavMenuHelper.SectionProfile">
+                <i class='bx bx-user nav__icon'></i>
+                <span class="nav__name" @onclick="@(_ => NavMenuHelper.ChangeActiveSection("Profile"))">Profile</span>
+                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+              </a>
+
+              <div class="nav__dropdown-collapse">
+                <div class="nav__dropdown-content">
+                  <a href="/about" class="nav__dropdown-item">About</a>
+                  <a href="/settings" class="nav__dropdown-item">Settings</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="nav__items">
+            <h3 class="nav__subtitle">Menu</h3>
+
+            <a href="/news" class="@NavMenuHelper.SectionNews">
+              <i class='bx bx-news nav__icon'></i>
+              <span class="nav__name" @onclick="@(_ => NavMenuHelper.ChangeActiveSection("News"))">News</span>
+            </a>
+            <a href="/explore" class="@NavMenuHelper.SectionExplore">
+              <i class='bx bx-compass nav__icon'></i>
+              <span class="nav__name" @onclick="@(_ => NavMenuHelper.ChangeActiveSection("Explore"))">Explore</span>
+            </a>
+            <a href="/saved" class="@NavMenuHelper.SectionSaved">
+              <i class='bx bx-bookmark nav__icon'></i>
+              <span class="nav__name" @onclick="@(_ => NavMenuHelper.ChangeActiveSection("Saved"))">Saved</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="nav__link nav__logout">
+        <i class='bx bx-log-out nav__icon'></i>
+        <span class="nav__name" @onclick="BeginSignOut">Log Out</span>
+      </a>
+    </nav>
+  </div>
+
+  <!--========== CONTENTS ==========-->
+  <main>
+    <section class="body-section">
+      @Body
+    </section>
+  </main>
+</div>
+
+@code{
+
+  // =========
+  // Nav menu design settings
+  private string _navClass = "nav";
+  private bool _isLogin = true;
+  
+  private void ChangeNavClass()
+  {
+    if (_isLogin)
+    {
+      _navClass = "nav show-menu";
+      _isLogin = false;
+    }
+    else
+    {
+      _navClass = "nav";
+      _isLogin = true;
+    }
+  }
+  // =========
+  
+  
+  // =========
+  // Autocomplete fill
+  private Ticker[] _tickers;
+
+  protected override async Task OnInitializedAsync()
+  {
+    Console.WriteLine("111");
+    _tickers = await Http.GetJsonAsync<Ticker[]>($"api/tickers");
+    Console.WriteLine("222");
+  }
+
+  private void OnValueSelectHandler(SelectEventArgs<Ticker> args)
+  {
+    NavigationManager.NavigateTo("/stockchart/" + args.ItemData.TickerSymbol);
+  }
+  // =========
+  
+  private async Task BeginSignOut(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
+  {
+    await SignOutManager.SetSignOutState();
+    Navigation.NavigateTo("authentication/logout");
+  }
+}

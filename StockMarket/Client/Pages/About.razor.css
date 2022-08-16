@@ -1,0 +1,35 @@
+﻿.about__content {
+    bottom: 1rem;
+    width: 100%;
+    background-color: var(--first-color-lighten);
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(35,0,77,.2);
+}
+
+.about__type {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.about__line {
+    margin-bottom: 20px;
+}
+
+.about__title {
+    font-weight: bolder;
+    font-size: large;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+@media screen and (max-width: 700px) {
+    .about__content {
+        font-size: 85%;
+    }
+    .about__title{
+        font-size: 85%;   
+    }
+}

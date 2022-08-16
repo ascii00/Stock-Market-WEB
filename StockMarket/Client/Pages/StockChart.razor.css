@@ -1,0 +1,100 @@
+﻿.StockInfo_main {
+    display: flex;
+    align-items: flex-start;
+}
+
+.StockChart_leftPart {
+    width: 6em;
+    margin-bottom: 2em;
+    margin-left: 3em;
+    margin-top: 1em;
+    margin-right: 3em;
+}
+
+.StockChart_centerPart {
+    margin-bottom: 2em;
+    margin-left: 3em;
+    margin-top: 1em;
+    margin-right: 3em;
+    flex: 600px;
+}
+
+.StockChart_rightPart{
+    margin-bottom: 2em;
+    margin-left: 3em;
+    margin-top: 1em;
+    margin-right: 3em;
+    font-size: 87%;
+    text-align: justify;
+}
+
+.StockChart_name {
+    font-weight: bold;
+}
+
+.StockChart_address {
+    font-size: 87%;
+}
+
+.StockChart_link {
+    font-size: 87%;
+    color: #6923D0;
+}
+
+.StockChart_header {
+    text-align: center;
+}
+.ulstyle {
+    margin: 0px;
+    padding-left: 20px;
+    display: inline-block;
+}
+.list {
+    float: left;
+    line-height: 20px;
+    margin: 10px;
+    min-width: 220px;
+}
+
+@media screen and (max-width: 1200px) {
+    .StockChart_rightPart {
+        display: none;
+    }
+
+    .StockChart_centerPart {
+        margin-bottom: 2em;
+        margin-left: 5em;
+        margin-top: 1em;
+        margin-right: 3em;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .StockChart_leftPart {
+        width: 5em;
+        margin-bottom: 0em;
+        margin-top: 0;
+
+    }
+
+    .StockChart_centerPart {
+        margin-bottom: 2em;
+        margin-left: 3em;
+        margin-top: 0;
+        margin-right: 3em;
+    }
+
+    .StockChart_name {
+        font-weight: bold;
+        font-size: 87%;
+    }
+
+    .StockChart_address {
+        font-size: 80%;
+    }
+
+    .StockChart_link {
+        font-size: 80%;
+        color: #6923D0;
+    }
+}

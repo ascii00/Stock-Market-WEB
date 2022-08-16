@@ -1,0 +1,49 @@
+﻿@page "/About"
+@attribute [Authorize]
+@layout MainLayout
+
+<p class="about__title">On this page you can find information about your account.</p>
+<div class="about__content">
+    <p class="about__line"><span class="about__type">Email adress:   </span><span class="about__value">@_email</span></p>
+    <p class="about__line"><span class="about__type">Auth time:   </span><span class="about__value">@_authTime</span></p>
+    <p class="about__line"><span class="about__type">SID:   </span><span class="about__value">@_sid</span></p>
+    <p class="about__line"><span class="about__type">SUB:   </span><span class="about__value">@_sub</span></p>
+    <p class="about__line"><span class="about__type">S-HASH:   </span><span class="about__value">@_sHash</span></p>
+</div>
+
+@code {
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+    
+    private string _email;
+    private string _authTime;
+    private string _sid;
+    private string _sub;
+    private string _sHash;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+        if (user.Identity != null) _email = user.Identity.Name;
+        foreach (var claim in user.Claims)
+        {
+            switch (claim.Type)
+            {
+                case "auth_time":
+                    _authTime = claim.Value;
+                    break;
+                case "sid":
+                    _sid = claim.Value;
+                    break;
+                case "sub":
+                    _sub = claim.Value;
+                    break;
+                case "s_hash":
+                    _sHash = claim.Value;
+                    break;
+            }
+        }
+    }
+}

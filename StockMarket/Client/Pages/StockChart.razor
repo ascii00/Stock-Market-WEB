@@ -1,0 +1,85 @@
+﻿@page "/stockchart/{Ticker}"
+@using Syncfusion.Blazor.Charts
+@using StockMarket.Shared.Models
+@inject HttpClient Http;
+@attribute [Authorize]
+@layout MainLayout
+
+<br/>
+@if (_stockChartDetails == null || _stockChartInfo == null)
+{
+    <div class="LoaderClass">
+        Loading...
+    </div>
+}
+else
+{
+    @if (_stockChartDetails.Length == 0 || _stockChartInfo.Name == null)
+    {
+        <p>You use a free version of polygon.io API, therefore you have only 5 API calls/minute</p>
+        <p>Please wait a little bit...</p>
+    }
+    else
+    {
+        <div class="StockInfo_main">
+            <img class="StockChart_leftPart" src="@_stockChartInfo.LogoUrl" alt="there is no image on server">
+            <div class="StockChart_centerPart">
+                <p class="StockChart_name">@_stockChartInfo.Name</p>
+                <p class="StockChart_address">@_stockChartInfo.Address</p>
+                <a class="StockChart_link" href="https://@_stockChartInfo.HomePage">@_stockChartInfo.HomePage</a>
+            </div>
+            <div class="StockChart_rightPart">
+                <p>@_stockChartInfo.Description</p></div>
+        </div>
+
+        <div id="ControlRegion">
+
+            <SfStockChart Title="Stock Price" Theme="Theme.Fluent" EnablePeriodSelector="true" EnableSelector="true">
+                <StockChartCrosshairSettings Enable="true" LineType="LineType.Vertical"></StockChartCrosshairSettings>
+                <StockChartTooltipSettings Enable="true" Shared="true" Format="${point.x} : ${point.y}"></StockChartTooltipSettings>
+                <StockChartSeriesCollection>
+                    <StockChartSeries DataSource="@_stockChartDetails" Type="ChartSeriesType.Candle" XName="Date" YName="Open"
+                                      High="High" Low="Low" Open="Open" Close="Close" Volume="Volume" Name="Google">
+                    </StockChartSeries>
+                </StockChartSeriesCollection>
+            </SfStockChart>
+
+        </div>
+    }
+}
+
+@code {
+    [Parameter] public string Ticker{ get; set; }
+    private StockChartData[] _stockChartDetails;
+    private StockChartInfo _stockChartInfo;
+    private string _ticker;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _ticker = Ticker;
+        _stockChartDetails = await GetAllElements();
+        _stockChartInfo = await GeInfo();
+    }
+    
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Ticker != _ticker)
+        {
+            _ticker = Ticker;
+            _stockChartDetails = null;
+            _stockChartInfo = null;
+            _stockChartDetails = await GetAllElements();
+            _stockChartInfo = await GeInfo();
+        }
+    }
+
+    private async Task<StockChartData[]> GetAllElements()
+    {
+        return await Http.GetJsonAsync<StockChartData[]>($"api/StockChart/{Ticker}");
+    }
+
+    private async Task<StockChartInfo> GeInfo()
+    {
+        return await Http.GetJsonAsync<StockChartInfo>($"api/StockInfo/{Ticker}");
+    }
+}
