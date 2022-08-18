@@ -136,9 +136,7 @@
 
   protected override async Task OnInitializedAsync()
   {
-    Console.WriteLine("111");
     _tickers = await Http.GetJsonAsync<Ticker[]>($"api/tickers");
-    Console.WriteLine("222");
   }
 
   private void OnValueSelectHandler(SelectEventArgs<Ticker> args)

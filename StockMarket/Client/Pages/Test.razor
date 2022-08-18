@@ -1,0 +1,36 @@
+﻿@page "/Test"
+@using System.Text
+@using Newtonsoft.Json
+@using StockMarket.Shared.Models
+@attribute [Authorize]
+@layout MainLayout
+@inject HttpClient Http;
+
+<h3>Test</h3>
+
+@if (result == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    @result
+}
+
+
+@code {
+    
+    string result;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var json = JsonConvert.SerializeObject(new ChangePassword
+        {
+            OldPassword = "Milanacmilanac%5",
+            NewPassword = "Milanacmilanac%4"
+        });
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await Http.PostAsync($"api/PasswordChange", data);
+        result = await response.Content.ReadAsStringAsync();
+    }
+}
