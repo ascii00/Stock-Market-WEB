@@ -1,6 +1,10 @@
 ﻿@page "/Settings"
+@using Newtonsoft.Json
+@using StockMarket.Shared.Models
+@using System.Text
 @attribute [Authorize]
 @layout MainLayout
+@inject HttpClient Http;
 
 <div class="settings__row">
     <div class="settings__col-md-4">
@@ -9,13 +13,28 @@
             <form class="settings__input_form" id="account" method="post">
                 <p class="settings__input_title">Change password</p>
                 <hr/>
-                <div class="settings__form-group">
-                    <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control"/>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+                <p class="@_statusMessagePasswordVisible">@_statusMessagePassword</p>
+                
+                <div class="settings__text-field">
+                    <label class="settings__text-field__label" for="settings__password">Old password:</label>
+                    <input @oninput="(e) => SetOldPassword(e.Value.ToString())" class="settings__text-field__input" type="password" name="password" id="settings__password" placeholder="Old password">
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                
+                <div class="settings__text-field">
+                    <label class="settings__text-field__label" for="settings__password_new">New password:</label>
+                    <input @oninput="(e) => SetNewPassword(e.Value.ToString())" class="settings__text-field__input" type="password" name="password" id="settings__password_new" placeholder="New password">
+                </div>
+                
+                <div class="settings__text-field">
+                    <label class="settings__text-field__label" for="settings__password_repeat">Confirm password:</label>
+                    <input @oninput="(e) => SetRepeatPassword(e.Value.ToString())" class="settings__text-field__input" type="password" name="password" id="settings__password_repeat" placeholder="Confirm password">
+                </div>
+                
+                <p class="@_statusMessagePasswordSuccessVisible">@_statusMessagePasswordSuccess</p>
+                
+                <div class="settings__form-group">
+                    <span class="settings__btn settings__btn-primary" @onclick="ChangePass">Submit</span>
                 </div>
             </form>
         </section>
@@ -23,5 +42,112 @@
 </div>
 
 @code {
+
+    private string _statusMessagePassword { get; set; }
+    private string _statusMessagePasswordSuccess = "Your password has been changed.";
+    private string _statusMessagePasswordVisible = "settings__status_message_error settings__visible_false";
+    private string _statusMessagePasswordSuccessVisible = "settings__status_message_success settings__visible_false";
     
+    private string _oldPassword { get; set; }
+    private string _newPassword { get; set; }
+    private string _repeatPassword { get; set; }
+
+    private void SetOldPassword(string password)
+    {
+        _oldPassword = password;
+    }
+    
+    private void SetNewPassword(string password)
+    {
+        _newPassword = password;
+    }
+    
+    private void SetRepeatPassword(string password)
+    {
+        _repeatPassword = password;
+    }
+    
+    private async Task ChangePass()
+    {
+        if (_newPassword is null ||
+            _oldPassword is null ||
+            _repeatPassword is null ||
+            _newPassword == "" ||
+            _oldPassword == "" ||
+            _repeatPassword == "")
+        {
+            _statusMessagePassword = "All lines must be filled.";
+            _statusMessagePasswordVisible = "settings__status_message_error settings__visible_true";
+            _statusMessagePasswordSuccessVisible = "settings__status_message_success settings__visible_false";
+            return;
+        }
+
+        if (_newPassword != _repeatPassword)
+        {
+            _statusMessagePassword = "The password and confirmation password do not match.";
+            _statusMessagePasswordVisible = "settings__status_message_error settings__visible_true";
+            _statusMessagePasswordSuccessVisible = "settings__status_message_success settings__visible_false";
+            return;
+        }
+
+        if (_newPassword.Length < 6 || _newPassword.Length > 100)
+        {
+            _statusMessagePassword = "The Password must be at least 6 and at max 100 characters long.";
+            _statusMessagePasswordVisible = "settings__status_message_error settings__visible_true";
+            _statusMessagePasswordSuccessVisible = "settings__status_message_success settings__visible_false";
+            return;
+        }
+
+        if (_newPassword.All(char.IsLetterOrDigit))
+        {
+            _statusMessagePassword = "Passwords must have at least one non alphanumeric character.";
+            _statusMessagePasswordVisible = "settings__status_message_error settings__visible_true";
+            _statusMessagePasswordSuccessVisible = "settings__status_message_success settings__visible_false";
+            return;
+        }
+
+        if (!_newPassword.Any(char.IsDigit))
+        {
+            _statusMessagePassword = "Passwords must have at least one digit ('0'-'9').";
+            _statusMessagePasswordVisible = "settings__status_message_error settings__visible_true";
+            _statusMessagePasswordSuccessVisible = "settings__status_message_success settings__visible_false";
+            return;
+        }
+
+        if (_newPassword == _newPassword.ToLower())
+        {
+            _statusMessagePassword = "Passwords must have at least one uppercase ('A'-'Z').";
+            _statusMessagePasswordVisible = "settings__status_message_error settings__visible_true";
+            _statusMessagePasswordSuccessVisible = "settings__status_message_success settings__visible_false";
+            return;
+        }
+
+        var json = JsonConvert.SerializeObject(new ChangePassword
+        {
+            OldPassword = _oldPassword,
+            NewPassword = _newPassword
+        });
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await Http.PostAsync($"api/PasswordChange", data);
+        var result = await response.Content.ReadAsStringAsync();
+        
+        if (result == "Unable to load user.")
+        {
+            _statusMessagePassword = "Unable to load user.";
+            _statusMessagePasswordVisible = "settings__status_message_error settings__visible_true";
+            _statusMessagePasswordSuccessVisible = "settings__status_message settings__visible_false";
+            return;
+        }
+        
+        if (result == "The entered password is incorrect.")
+        {
+            _statusMessagePassword = "The entered password is incorrect.";
+            _statusMessagePasswordVisible = "settings__status_message_error settings__visible_true";
+            _statusMessagePasswordSuccessVisible = "settings__status_message settings__visible_false";
+            return;
+        }
+
+        _statusMessagePasswordVisible = "settings__status_message_error settings__visible_false";
+        _statusMessagePasswordSuccessVisible = "settings__status_message_success settings__visible_true";
+    }
 }

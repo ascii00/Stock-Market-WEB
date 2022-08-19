@@ -43,8 +43,7 @@ namespace StockMarket.Server.Controllers
                 return "The entered password is incorrect.";
 
             await _signInManager.RefreshSignInAsync(user);
-
-            Console.WriteLine(111);
+            
             return "Your password has been changed.";
         }
     }
