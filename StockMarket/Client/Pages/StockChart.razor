@@ -30,6 +30,14 @@ else
             <div class="StockChart_rightPart">
                 <p>@_stockChartInfo.Description</p></div>
         </div>
+        
+        <div class="stockchart__form-group">
+            <span class="stockchart__btn stockchart__btn-primary @_visibilityFavouritesButtonAdd" @onclick="AddToFavourites">Add to favourites</span>
+        </div>
+        
+        <div class="stockchart__form-group">
+            <span class="stockchart__btn stockchart__btn-primary @_visibilityFavouritesButtonRemove" @onclick="RemoveFromFavourites">Remobe from favourites</span>
+        </div>
 
         <div id="ControlRegion">
 
@@ -80,5 +88,19 @@ else
     private async Task<StockChartInfo> GeInfo()
     {
         return await Http.GetJsonAsync<StockChartInfo>($"api/StockInfo/{Ticker}");
+    }
+
+
+    private string _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
+    private string _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
+    
+    private async Task AddToFavourites()
+    {
+        
+    }
+    
+    private async Task RemoveFromFavourites()
+    {
+        
     }
 }

@@ -1,9 +1,10 @@
 ﻿@model string
 
-<h1>STATUS</h1>
-<h1>STATUS</h1>
-<h1>STATUS</h1>
-<h1>STATUS</h1>
+<head>
+    <link rel="stylesheet" href="~/css/registerconfirm.css" type="text/css" />
+</head>
+
+<div class="content">
 @if (!String.IsNullOrEmpty(Model))
 {
     var statusMessageClass = Model.StartsWith("Error") ? "danger" : "success";
@@ -12,3 +13,4 @@
         @Model
     </div>
 }
+</div>

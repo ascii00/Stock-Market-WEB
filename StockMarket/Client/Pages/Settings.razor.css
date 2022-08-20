@@ -166,3 +166,9 @@ section {
 .settings__visible_false {
     display: none;
 }
+
+@media screen and (max-width: 920px) {
+    .settings__row {
+        width: 800px;
+    }
+}

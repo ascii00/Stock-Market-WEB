@@ -2,6 +2,8 @@
 @using Newtonsoft.Json
 @using StockMarket.Shared.Models
 @using System.Text
+@using System.Text.RegularExpressions
+@using System.Globalization
 @attribute [Authorize]
 @layout MainLayout
 @inject HttpClient Http;
@@ -41,6 +43,31 @@
     </div>
 </div>
 
+<div class="settings__row">
+    <div class="settings__col-md-4">
+        <section>
+            <br/>
+            <form class="settings__input_form" id="account" method="post">
+                <p class="settings__input_title">Change email</p>
+                <hr/>
+
+                <p class="@_statusMessageMailVisible">@_statusMessageMail</p>
+                
+                <div class="settings__text-field">
+                    <label class="settings__text-field__label" for="settings__mail">Email:</label>
+                    <input @oninput="(e) => SetMail(e.Value.ToString())" class="settings__text-field__input" type="email" name="email" id="settings__mail" placeholder="email">
+                </div>
+
+                <p class="@_statusMessageMailSuccessVisible">@_statusMessageMailSuccess</p>
+                
+                <div class="settings__form-group">
+                    <span class="settings__btn settings__btn-primary" @onclick="ChangeMail">Submit</span>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
 @code {
 
     private string _statusMessagePassword { get; set; }
@@ -48,9 +75,15 @@
     private string _statusMessagePasswordVisible = "settings__status_message_error settings__visible_false";
     private string _statusMessagePasswordSuccessVisible = "settings__status_message_success settings__visible_false";
     
+    private string _statusMessageMail { get; set; }
+    private string _statusMessageMailSuccess = "Confirmation link to change email sent. Please check your email.";
+    private string _statusMessageMailVisible = "settings__status_message_error settings__visible_false";
+    private string _statusMessageMailSuccessVisible = "settings__status_message_success settings__visible_false";
+    
     private string _oldPassword { get; set; }
     private string _newPassword { get; set; }
     private string _repeatPassword { get; set; }
+    private string _mail { get; set; }
 
     private void SetOldPassword(string password)
     {
@@ -67,6 +100,11 @@
         _repeatPassword = password;
     }
     
+    private void SetMail(string mail)
+    {
+        _mail = mail;
+    }
+
     private async Task ChangePass()
     {
         if (_newPassword is null ||
@@ -149,5 +187,98 @@
 
         _statusMessagePasswordVisible = "settings__status_message_error settings__visible_false";
         _statusMessagePasswordSuccessVisible = "settings__status_message_success settings__visible_true";
+    }
+
+    private async Task ChangeMail()
+    {
+        if (!IsValidEmail(_mail))
+        {
+            _statusMessageMail = "The entered email is incorrect.";
+            _statusMessageMailVisible = "settings__status_message_error settings__visible_true";
+            _statusMessageMailSuccessVisible = "settings__status_message settings__visible_false";
+            return;
+        }
+
+        string result;
+        try
+        {
+            var json = JsonConvert.SerializeObject(new ChangeMail
+            {
+                NewMail = _mail
+            });
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await Http.PostAsync($"api/EmailChange", data);
+            result = await response.Content.ReadAsStringAsync();
+        }
+        catch (Exception)
+        {
+            _statusMessageMail = "Error during sending a mail.";
+            _statusMessageMailVisible = "settings__status_message_error settings__visible_true";
+            _statusMessageMailSuccessVisible = "settings__status_message settings__visible_false";
+            return;
+        }
+        
+        if (result == "Unable to load user.")
+        {
+            _statusMessageMail = "Unable to load user.";
+            _statusMessageMailVisible = "settings__status_message_error settings__visible_true";
+            _statusMessageMailSuccessVisible = "settings__status_message settings__visible_false";
+            return;
+        }
+
+        if (result == "Your email is unchanged.")
+        {
+            _statusMessageMail = "Your email is unchanged.";
+            _statusMessageMailVisible = "settings__status_message_error settings__visible_true";
+            _statusMessageMailSuccessVisible = "settings__status_message settings__visible_false";
+            return;
+        }
+        
+        _statusMessageMailVisible = "settings__status_message_error settings__visible_false";
+        _statusMessageMailSuccessVisible = "settings__status_message_success settings__visible_true";
+    }
+    
+    private static bool IsValidEmail(string email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+            return false;
+
+        try
+        {
+            // Normalize the domain
+            email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+            // Examines the domain part of the email and normalizes it.
+            string DomainMapper(Match match)
+            {
+            // Use IdnMapping class to convert Unicode domain names.
+                var idn = new IdnMapping();
+
+            // Pull out and process domain name (throws ArgumentException on invalid)
+                string domainName = idn.GetAscii(match.Groups[2].Value);
+
+                return match.Groups[1].Value + domainName;
+            }
+        }
+        catch (RegexMatchTimeoutException e)
+        {
+            return false;
+        }
+        catch (ArgumentException e)
+        {
+            return false;
+        }
+
+        try
+        {
+            return Regex.IsMatch(email,
+                @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+        }
+        catch (RegexMatchTimeoutException)
+        {
+            return false;
+        }
     }
 }

@@ -1,7 +1,4 @@
 ﻿@page "/Test"
-@using System.Text
-@using Newtonsoft.Json
-@using StockMarket.Shared.Models
 @attribute [Authorize]
 @layout MainLayout
 @inject HttpClient Http;
@@ -14,23 +11,24 @@
 }
 else
 {
-    @result
+    @result.Content.ReadAsStringAsync()
 }
 
 
 @code {
     
-    string result;
+    HttpResponseMessage result;
 
     protected override async Task OnInitializedAsync()
     {
-        var json = JsonConvert.SerializeObject(new ChangePassword
-        {
-            OldPassword = "Milanacmilanac%5",
-            NewPassword = "Milanacmilanac%4"
-        });
-        var data = new StringContent(json, Encoding.UTF8, "application/json");
-        var response = await Http.PostAsync($"api/PasswordChange", data);
-        result = await response.Content.ReadAsStringAsync();
+         result = await Http.GetAsync($"api/DownloadPersonalData");
+
+    // // var json = JsonConvert.SerializeObject(new ChangeMail()
+    // // {
+    // //     NewMail = "abpmu@mailto.plus"
+    // // });
+    // // var data = new StringContent(json, Encoding.UTF8, "application/json");
+    // var response = await Http.PostAsync($"api/EmailChange");
+    // result = await response.Content.ReadAsStringAsync();
     }
 }

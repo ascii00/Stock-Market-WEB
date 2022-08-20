@@ -42,6 +42,7 @@ namespace StockMarket.Server.Controllers
 
             return new StockChartInfo
             {
+                Ticker = Convert.ToString(json["results"]?["ticker"]),
                 Name = Convert.ToString(json["results"]?["name"]),
                 Description = Convert.ToString(json["results"]?["description"]),
                 HomePage = Convert.ToString(json["results"]?["homepage_url"])?.Replace("https://www.", ""),  

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace StockMarket.Server.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class TickersController : ControllerBase
