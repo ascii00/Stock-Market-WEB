@@ -1,9 +1,25 @@
 ﻿@page "/news"
+@using StockMarket.Shared.Models
 @attribute [Authorize]
 @layout MainLayout
+@inject HttpClient Http;
 
-<h3>News</h3>
+@if (_stockNews == null)
+{
+    <h3>You have not favourite companies.</h3>
+    <h3>Add companies to your favourite list, to see news abot them.</h3>
+}
+else
+{
+    <h3>News</h3>
+}
 
 @code {
     
+    private List<StockNews> _stockNews;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _stockNews = await Http.GetJsonAsync<List<StockNews>>($"api/StockChart");
+    }
 }

@@ -1,34 +1,12 @@
 ﻿@page "/Test"
-@attribute [Authorize]
+@using StockMarket.Shared.Models
 @layout MainLayout
 @inject HttpClient Http;
 
-<h3>Test</h3>
-
-@if (result == null)
+@code
 {
-    <p>Loading...</p>
-}
-else
-{
-    @result.Content.ReadAsStringAsync()
-}
-
-
-@code {
-    
-    HttpResponseMessage result;
-
     protected override async Task OnInitializedAsync()
     {
-         result = await Http.GetAsync($"api/DownloadPersonalData");
-
-    // // var json = JsonConvert.SerializeObject(new ChangeMail()
-    // // {
-    // //     NewMail = "abpmu@mailto.plus"
-    // // });
-    // // var data = new StringContent(json, Encoding.UTF8, "application/json");
-    // var response = await Http.PostAsync($"api/EmailChange");
-    // result = await response.Content.ReadAsStringAsync();
+        await Http.GetJsonAsync<List<StockNews>>($"api/StockNews");
     }
 }

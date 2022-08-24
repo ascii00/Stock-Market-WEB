@@ -1,9 +1,71 @@
 ﻿@page "/saved"
+@using StockMarket.Shared.Models
+@using Newtonsoft.Json
+@using System.Text
 @attribute [Authorize]
 @layout MainLayout
+@inject HttpClient Http;
+@inject NavigationManager NavigationManager
 
-<h3>Saved</h3>
+<div class="saved__title">
+    <p class="saved__title_one">This page contains list of your favorite companies.</p>
+    <p class="saved__title_two">Click "Details" to see more information about the company.</p>
+</div>
 
-@code {
-    
+<div class="saved__content" style="position:relative; min-height: 500px;">
+    <SfGrid DataSource="@Companies" AllowPaging="true" AllowSorting="true" AllowFiltering="true" AllowGrouping="false">
+        
+        <GridPageSettings PageSize="15"></GridPageSettings>
+        <GridEvents CommandClicked="OnCommandClicked" TValue="FavouriteCompany"></GridEvents>
+        <GridEditSettings AllowDeleting="true" Mode="EditMode.Normal"></GridEditSettings>
+        <GridColumns>
+
+            <GridColumn HeaderText="Stock info" Width="50" TextAlign="TextAlign.Left">
+                <GridCommandColumns>
+                    <GridCommandColumn ButtonOption="@(new CommandButtonOptions() { Content = "Details", CssClass = "e-flat" })"></GridCommandColumn>
+                </GridCommandColumns>
+            </GridColumn>
+            
+            <GridColumn Field=@nameof(FavouriteCompany.Ticker) HeaderText="Ticker" IsPrimaryKey="true" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+            <GridColumn Field=@nameof(FavouriteCompany.CompanyName) HeaderText="Company Name" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(FavouriteCompany.City) HeaderText="City" TextAlign="TextAlign.Right" Width="130"></GridColumn>
+            <GridColumn Field=@nameof(FavouriteCompany.AddingDate) HeaderText="Adding date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="50"></GridColumn>
+            
+            <GridColumn HeaderText="Remove" Width="50">
+                <GridCommandColumns>
+                    <GridCommandColumn Type="CommandButtonType.Delete" ButtonOption="@(new CommandButtonOptions() { IconCss = "e-icons e-delete", CssClass = "e-flat" })">
+                    </GridCommandColumn>
+                </GridCommandColumns>
+            </GridColumn>
+
+        </GridColumns>
+    </SfGrid>
+</div>
+
+@code{
+
+    private List<FavouriteCompany> Companies { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Companies = await Http.GetJsonAsync<List<FavouriteCompany>>($"api/FavouritesCompany");
+    }
+
+    private async void OnCommandClicked(CommandClickEventArgs<FavouriteCompany> args)
+    {
+        if (args.CommandColumn.ButtonOption.Content == "Details")
+            NavigationManager.NavigateTo("/stockchart/" + args.RowData.Ticker);
+        else
+            await RemoveFromFavourites(args.RowData.Ticker);
+        }
+
+    private async Task RemoveFromFavourites(string ticker)
+    {
+        var json = JsonConvert.SerializeObject(new StockChartInfo()
+        {
+            Ticker = ticker
+        });
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        await Http.PostAsync($"api/FavouritesCompany/Remove", data);
+    }
 }

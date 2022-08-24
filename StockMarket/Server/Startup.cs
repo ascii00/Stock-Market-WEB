@@ -40,6 +40,7 @@ namespace StockMarket.Server
             services.AddAuthentication()
                 .AddIdentityServerJwt();
             services.AddScoped<IStockService, StockService>();
+            services.AddScoped<IFavouriteService, FavouriteService>();
             services.AddTransient<IEmailSender,EmailSender>();
             services.AddControllersWithViews();
             services.AddRazorPages();

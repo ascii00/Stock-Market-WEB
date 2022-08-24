@@ -15,6 +15,7 @@
     <PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.1.0.60" />
     <PackageReference Include="Syncfusion.Blazor.Themes" Version="20.1.0.60" />
     <PackageReference Include="Syncfusion.Blazor.Data" Version="20.1.0.60" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="20.1.0.60" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta1" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />

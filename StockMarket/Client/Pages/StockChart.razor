@@ -1,5 +1,7 @@
 ﻿@page "/stockchart/{Ticker}"
 @using StockMarket.Shared.Models
+@using Newtonsoft.Json
+@using System.Text
 @inject HttpClient Http;
 @attribute [Authorize]
 @layout MainLayout
@@ -30,14 +32,6 @@ else
             <div class="StockChart_rightPart">
                 <p>@_stockChartInfo.Description</p></div>
         </div>
-        
-        <div class="stockchart__form-group">
-            <span class="stockchart__btn stockchart__btn-primary @_visibilityFavouritesButtonAdd" @onclick="AddToFavourites">Add to favourites</span>
-        </div>
-        
-        <div class="stockchart__form-group">
-            <span class="stockchart__btn stockchart__btn-primary @_visibilityFavouritesButtonRemove" @onclick="RemoveFromFavourites">Remobe from favourites</span>
-        </div>
 
         <div id="ControlRegion">
 
@@ -52,6 +46,14 @@ else
             </SfStockChart>
 
         </div>
+        
+        <div class="stockchart__form-group">
+            <span class="stockchart__btn stockchart__btn-primary @_visibilityFavouritesButtonAdd" @onclick="AddToFavourites">Add to favourites</span>
+        </div>
+        
+        <div class="stockchart__form-group">
+            <span class="stockchart__btn stockchart__btn-primary @_visibilityFavouritesButtonRemove" @onclick="RemoveFromFavourites">Remove from favourites</span>
+        </div>
     }
 }
 
@@ -60,12 +62,16 @@ else
     private StockChartData[] _stockChartDetails;
     private StockChartInfo _stockChartInfo;
     private string _ticker;
+    
+    private string _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
+    private string _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
 
     protected override async Task OnInitializedAsync()
     {
         _ticker = Ticker;
         _stockChartDetails = await GetAllElements();
         _stockChartInfo = await GeInfo();
+        await CheckOnFavourites();
     }
     
     protected override async Task OnParametersSetAsync()
@@ -77,6 +83,7 @@ else
             _stockChartInfo = null;
             _stockChartDetails = await GetAllElements();
             _stockChartInfo = await GeInfo();
+            await CheckOnFavourites();
         }
     }
 
@@ -90,17 +97,68 @@ else
         return await Http.GetJsonAsync<StockChartInfo>($"api/StockInfo/{Ticker}");
     }
 
-
-    private string _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
-    private string _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
-    
     private async Task AddToFavourites()
     {
-        
+        var json = JsonConvert.SerializeObject(_stockChartInfo);
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await Http.PostAsync($"api/FavouritesCompany/Add", data);
+        var result = await response.Content.ReadAsStringAsync();
+        if (result == "Error during communication with database.")
+        {
+            _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
+            _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
+        }
+        else
+        {
+            _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
+            _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_enable";
+        }
     }
     
     private async Task RemoveFromFavourites()
     {
+        var json = JsonConvert.SerializeObject(_stockChartInfo);
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await Http.PostAsync($"api/FavouritesCompany/Remove", data);
+        var result = await response.Content.ReadAsStringAsync();
+        if (result == "Error during communication with database.")
+        {
+            _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
+            _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
+        }
+        else
+        {
+            _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_enable";
+            _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
+        }
+    }
+
+    private async Task CheckOnFavourites()
+    {
+        var json = JsonConvert.SerializeObject(_stockChartInfo);
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await Http.PostAsync($"api/FavouritesCompany/Check", data);
+        var result = await response.Content.ReadAsStringAsync();
         
+        Console.WriteLine(data);
+
+        switch (result)
+        {
+            case "true":
+                Console.WriteLine(1);
+                _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
+                _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_enable";
+                break;
+            case "false":
+                Console.WriteLine(2);
+                _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_enable";
+                _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
+                break;
+            default:
+                Console.WriteLine(3);
+                _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
+                _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
+                break;
+        }
     }
 }

@@ -1,0 +1,17 @@
+﻿.saved__title {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 25px;    
+}
+
+.saved__title_one {
+    font-weight: bolder;
+    font-size: large;
+    margin-bottom: 5px;
+}
+
+.saved__title_two {
+    font-weight: normal;
+    font-size: small;
+}
+

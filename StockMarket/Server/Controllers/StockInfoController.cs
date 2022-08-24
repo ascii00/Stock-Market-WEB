@@ -50,7 +50,8 @@ namespace StockMarket.Server.Controllers
                 Address = Convert.ToString(json["results"]?["address"]?["address1"]) + " " +
                           Convert.ToString(json["results"]?["address"]?["city"]) + " " +
                           Convert.ToString(json["results"]?["address"]?["state"]) + " " +
-                          Convert.ToString(json["results"]?["address"]?["postal_code"]) 
+                          Convert.ToString(json["results"]?["address"]?["postal_code"]),
+                City = Convert.ToString(json["results"]?["address"]?["city"])
             };
         }
     }
