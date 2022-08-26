@@ -12,8 +12,7 @@ namespace StockMarket.Server.Services
         {
             _httpClient = new HttpClient();
         }
-
-
+        
         public async Task<string?> GetJsonFromUrl(string url)
         {
             var result = await _httpClient.GetAsync(url);

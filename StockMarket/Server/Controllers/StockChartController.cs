@@ -27,15 +27,20 @@ namespace StockMarket.Server.Controllers
             _service = service;
         }
 
-        [HttpGet("{ticker}")]
-        public async Task<IEnumerable<StockChartData>> Get(string ticker)
+        [HttpGet("{tickerTime}")]
+        public async Task<IEnumerable<StockChartData>> Get(string tickerTime)
         {
+            var ticker = tickerTime.Split(":")[0];
+            var timespan= tickerTime.Split(":")[1];
+            
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
-            var dateYearBefore = DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd");
+            string dateBefore;
+            dateBefore = timespan == "day" ? DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd") : dateNow;
+            
         
             var apiKey = _configuration["ApiKey"];
-            var url = $"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/day/{dateYearBefore}/{dateNow}?adjusted=true&sort=asc&apiKey={apiKey}";
+            var url = $"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/{timespan}/{dateBefore}/{dateNow}?adjusted=true&sort=asc&apiKey={apiKey}";
 
             var data = _service.GetJsonFromUrl(url);
             

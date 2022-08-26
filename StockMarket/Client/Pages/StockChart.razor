@@ -40,7 +40,7 @@ else
                 <StockChartTooltipSettings Enable="true" Shared="true" Format="${point.x} : ${point.y}"></StockChartTooltipSettings>
                 <StockChartSeriesCollection>
                     <StockChartSeries DataSource="@_stockChartDetails" Type="ChartSeriesType.Candle" XName="Date" YName="Open"
-                                      High="High" Low="Low" Open="Open" Close="Close" Volume="Volume" Name="Google">
+                                      High="High" Low="Low" Open="Open" Close="Close" Volume="Volume" Name="@_ticker">
                     </StockChartSeries>
                 </StockChartSeriesCollection>
             </SfStockChart>
@@ -89,7 +89,7 @@ else
 
     private async Task<StockChartData[]> GetAllElements()
     {
-        return await Http.GetJsonAsync<StockChartData[]>($"api/StockChart/{Ticker}");
+        return await Http.GetJsonAsync<StockChartData[]>($"api/StockChart/{Ticker}:day");
     }
 
     private async Task<StockChartInfo> GeInfo()
@@ -139,23 +139,18 @@ else
         var data = new StringContent(json, Encoding.UTF8, "application/json");
         var response = await Http.PostAsync($"api/FavouritesCompany/Check", data);
         var result = await response.Content.ReadAsStringAsync();
-        
-        Console.WriteLine(data);
 
         switch (result)
         {
             case "true":
-                Console.WriteLine(1);
                 _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
                 _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_enable";
                 break;
             case "false":
-                Console.WriteLine(2);
                 _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_enable";
                 _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
                 break;
             default:
-                Console.WriteLine(3);
                 _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
                 _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
                 break;

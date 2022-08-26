@@ -20,97 +20,79 @@ namespace StockMarket.Server.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IFavouriteService _favouriteService;
-        private readonly IStockService _stockServiceservice;
+        private readonly IStockService _stockService;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public StockNewsController(
             IConfiguration configuration,
             IFavouriteService favouriteService,
-            IStockService stockServiceservice,
+            IStockService stockService,
             IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
             _configuration = configuration;
             _favouriteService = favouriteService;
-            _stockServiceservice = stockServiceservice;
+            _stockService = stockService;
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<StockNews>> Get()
+        [HttpGet("{ticker}")]
+        public async Task<IEnumerable<StockNews>> Get(string ticker)
         {
             var apiKey = _configuration["ApiKey"];
 
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var allFavourites = await _favouriteService.GetAllFavouritesCompanies(userId);
+            var result = new List<StockNews>();
 
-            List<StockNews> result;
-
-            string url;
-            foreach (var favourite in allFavourites)
+            var url = $"https://api.polygon.io/v2/reference/news?ticker={ticker}&limit=15&apiKey={apiKey}";
+            var data = _stockService.GetJsonFromUrl(url);
+            JObject json;
+            try
             {
-                // url = $"https://api.polygon.io/v2/reference/news?ticker={favourite.Ticker}&limit=3&apiKey={apiKey}";
-                url = $"https://api.polygon.io/v2/reference/news?ticker=TSLA&limit=3&apiKey={apiKey}";
-                var data = _stockServiceservice.GetJsonFromUrl(url);
-                JObject json;
-                try
-                {
-                    json = JObject.Parse(await data ?? throw new InvalidOperationException());
-                }
-                catch (Exception)
-                {
-                    continue;
-                }
-                
-                var title = (json["results"] ?? "")
-                    .Select(token => token["title"].Value<string>())
-                    .ToArray();
-
-                var publisherName = (json["results"] ?? "")
-                    .Select(token => token["publisher"])
-                    .Select(token => token["name"].Value<string>())
-                    .ToArray();
-
-                var description = (json["results"] ?? "")
-                    .Select(token => token["description"].Value<string>())
-                    .ToArray();
-                
-                var articleUrl = (json["results"] ?? "")
-                    .Select(token => token["article_url"].Value<string>())
-                    .ToArray();
-
-                foreach (var tmp in title)
-                {
-                    Console.WriteLine(tmp);
-                }
-                Console.WriteLine();
-                
-                foreach (var tmp in publisherName)
-                {
-                    Console.WriteLine(tmp);
-                }
-                Console.WriteLine();
-                
-                foreach (var tmp in description)
-                {
-                    Console.WriteLine(tmp);
-                }
-                Console.WriteLine();
-                
-                foreach (var tmp in articleUrl)
-                {
-                    Console.WriteLine(tmp);
-                }
-                Console.WriteLine();
-
-                Console.WriteLine(publisherName[0]);
-                Console.WriteLine(title.Length);
-                Console.WriteLine(publisherName.Length);
-                Console.WriteLine(description.Length);
-                Console.WriteLine(articleUrl.Length);
+                json = JObject.Parse(await data ?? throw new InvalidOperationException());
+            }
+            catch (Exception)
+            {
+                return result;
             }
 
-            return new List<StockNews>();
+            var title = (json["results"] ?? "")
+                .Select(token => token["title"])
+                .ToArray();
 
+            var publisherName = (json["results"] ?? "")
+                .Select(token => token["publisher"])
+                .Select(token => token["name"])
+                .ToArray();
+
+            var description = (json["results"] ?? "")
+                .Select(token => token["description"])
+                .ToArray();
+                
+            var articleUrl = (json["results"] ?? "")
+                .Select(token => token["article_url"])
+                .ToArray();
+                
+            var publishedUtc = (json["results"] ?? "")
+                .Select(token => token["published_utc"])
+                .ToArray();
+
+            for (var i = 0; i < title.Length; i++)
+            {
+                title[i] ??= "";
+                publisherName[i] ??= "";
+                description[i] ??= "";
+                articleUrl[i] ??= "";
+
+                result.Add(new StockNews()
+                {
+                    Title = title[i].ToString(),
+                    PublisherName = publisherName[i].ToString(),
+                    Description = description[i].ToString(),
+                    ArticleUrl = articleUrl[i].ToString(),
+                    PublishedDate = Convert.ToDateTime(publishedUtc[i])
+                });
+            }
+            Console.WriteLine(result.Count);
+            return result;
         }
     }
 }

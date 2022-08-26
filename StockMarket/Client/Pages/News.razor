@@ -4,22 +4,66 @@
 @layout MainLayout
 @inject HttpClient Http;
 
-@if (_stockNews == null)
+@if (Companies is null)
 {
-    <h3>You have not favourite companies.</h3>
-    <h3>Add companies to your favourite list, to see news abot them.</h3>
+    <p>Loading...</p>
 }
 else
 {
-    <h3>News</h3>
+    <p class="news__p">Choose a <b>ticker</b> from your favourites list:</p>
+    <br/>
+    <select class="news__select" name="tickers" id="tickers">
+        @foreach (var company in Companies)
+        {
+            <option class="news__option" value="@company.Ticker" @onclick="@(_ => GetNewsAsync(company.Ticker))">@company.Ticker</option>
+        }
+    </select>
+    <hr/>
 }
 
-@code {
-    
-    private List<StockNews> _stockNews;
-    
+@if (_newsList is not null)
+{
+    if (_newsList.Count == 0)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        foreach (var tmp in _newsList)
+        {
+            <div class="news__content">
+                <p class="news__line"><span class="news__type_title">@tmp.Title</span></p>
+                <p class="news__line"><span class="news__type_desc">@tmp.Description</span></p>
+                <a href="@tmp.ArticleUrl" class="news__type_article_url">@tmp.ArticleUrl</a>
+                <br/>
+                <br/>
+                <p class="news__type_publisher">©@tmp.PublisherName</p>
+                <p class="news__type_published_date">@tmp.PublishedDate</p>
+            </div>
+        }   
+        <p class="news__p_footer">The latest news on the request of "@Ticker" is shown.</p>
+    }
+}
+
+@code
+{
+    private List<StockNews> _newsList;
+    private List<FavouriteCompany> Companies { get; set; }
+    private string Ticker { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
-        _stockNews = await Http.GetJsonAsync<List<StockNews>>($"api/StockChart");
+        Companies = await Http.GetJsonAsync<List<FavouriteCompany>>($"api/FavouritesCompany");
+    }
+
+    private async void GetNewsAsync(string companyTicker)
+    {
+        Ticker = companyTicker;
+        if (_newsList is not null)
+            _newsList.Clear();
+        else
+            _newsList = new List<StockNews>();
+        _newsList = await Http.GetJsonAsync<List<StockNews>>($"api/StockNews/{companyTicker}");
+        StateHasChanged();
     }
 }
