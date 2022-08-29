@@ -1,0 +1,46 @@
+﻿@page "/Status" 
+@using StockMarket.Shared.Models
+@layout MainLayout
+@inject HttpClient Http;
+@attribute [Authorize]
+
+@if (Holidays is null || Status is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <p class="market__p"><b>Currently market status:</b></p>
+    <div class="market__status">
+        <p>Market: <b>@Status.Market</b></p>
+        <ul>
+            <li>Nasdaq: @Status.Nasdaq</li>
+            <li>Nyse: @Status.Nyse</li>
+            <li>OTC: @Status.Otc</li>
+        </ul>
+        <p>Server time: @Status.ServerTime</p>
+    </div>
+    
+    <br/>
+    <hr/>
+    
+    <p class="market__p"><b>Market holidays list:</b></p>
+    <div class="market__holidays">
+        @foreach(var holiday in Holidays)
+        {
+            <p><b>@holiday.Exchange</b> - @holiday.HolidayName - @holiday.Date - @holiday.Status</p>
+        }
+    </div>
+}
+
+@code {
+    
+    private List<MarketHoliday> Holidays { get; set; }
+    private MarketStatus Status { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Holidays = await  Http.GetJsonAsync<List<MarketHoliday>>($"api/MarketStatus/Holidays");
+        Status = await Http.GetJsonAsync<MarketStatus>($"api/MarketStatus/Status");
+    }
+}

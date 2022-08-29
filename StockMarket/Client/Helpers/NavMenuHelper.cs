@@ -8,7 +8,7 @@ namespace StockMarket.Client.Helpers
         public static string SectionHome = "nav__link active";
         public static string SectionProfile = "nav__link";
         public static string SectionNews = "nav__link";
-        public static string SectionExplore = "nav__link";
+        public static string SectionStatus = "nav__link";
         public static string SectionSaved = "nav__link";
 
         public static void ChangeActiveSection(string section)
@@ -25,8 +25,8 @@ namespace StockMarket.Client.Helpers
                 case "News":
                     SectionNews = "nav__link active";
                     break;
-                case "Explore":
-                    SectionExplore = "nav__link active";
+                case "Status":
+                    SectionStatus = "nav__link active";
                     break;
                 case "Saved":
                     SectionSaved = "nav__link active";
@@ -38,7 +38,7 @@ namespace StockMarket.Client.Helpers
             SectionHome = "nav__link";
             SectionProfile = "nav__link";
             SectionNews = "nav__link";
-            SectionExplore = "nav__link";
+            SectionStatus = "nav__link";
             SectionSaved = "nav__link";
         }
     }

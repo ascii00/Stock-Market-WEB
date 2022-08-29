@@ -28,7 +28,7 @@ namespace StockMarket.Server.Controllers
         }
 
         [HttpGet("{tickerTime}")]
-        public async Task<IEnumerable<StockChartData>> Get(string tickerTime)
+        public async Task<IEnumerable<StockChartData>> GetStockData(string tickerTime)
         {
             var ticker = tickerTime.Split(":")[0];
             var timespan= tickerTime.Split(":")[1];
@@ -36,9 +36,9 @@ namespace StockMarket.Server.Controllers
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
             string dateBefore;
-            dateBefore = timespan == "day" ? DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd") : dateNow;
-            
-        
+            dateBefore = timespan == "day" ? DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd") : DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
+
+
             var apiKey = _configuration["ApiKey"];
             var url = $"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/{timespan}/{dateBefore}/{dateNow}?adjusted=true&sort=asc&apiKey={apiKey}";
 
@@ -53,13 +53,13 @@ namespace StockMarket.Server.Controllers
             {
                 return new List<StockChartData>();
             }
-
+            
             var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-        
+
             var dateFromApi = (json["results"] ?? throw new InvalidOperationException())
                 .Select(token => token["t"].Value<string>())
                 .ToArray();
-    
+
             var open = json["results"]
                 .Select(token => token["o"].Value<string>())
                 .ToArray();

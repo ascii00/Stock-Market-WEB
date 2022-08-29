@@ -33,7 +33,37 @@ else
                 <p>@_stockChartInfo.Description</p></div>
         </div>
 
-        <div id="ControlRegion">
+        <hr/>
+        <div stockchart__center>
+            
+            <div class="stockchart__selectBox @_visibilitySelectBoxDay">
+                <p class="stockchart__p">Timespan:</p>
+                <select class="stockchart__select" name="tickers" id="tickers">
+                    <option class="stockchart__option" value="Day" @onclick="@(_ => ChangeTimeSpan("day"))">Day</option>
+                    <option class="stockchart__option" value="Minute" @onclick="@(_ => ChangeTimeSpan("minute"))">Minute</option>
+                </select>
+            </div>
+
+            <div class="stockchart__selectBox @_visibilitySelectBoxMinute">
+                <p class="stockchart__p">Timespan:</p>
+                <select class="stockchart__select" name="tickers" id="tickers">
+                    <option class="stockchart__option" value="Minute" @onclick="@(_ => ChangeTimeSpan("minute"))">Minute</option>
+                    <option class="stockchart__option" value="Day" @onclick="@(_ => ChangeTimeSpan("day"))">Day</option>
+                </select>
+            </div>
+
+            <div class="stockchart__daily">
+                <p><b>Open:</b> @_stockChartDetails[^1].Open$"</p>
+                <P><b>Close:</b> @_stockChartDetails[^1].Close$"</P>
+                <P><b>High:</b> @_stockChartDetails[^1].High$"</P>
+                <P><b>Low:</b> @_stockChartDetails[^1].Low$"</P>
+            </div>
+
+        </div>
+        
+        
+        
+        <div id="ControlRegion" class="@_visibilityStockChartDay">
 
             <SfStockChart Title="Stock Price" Theme="Theme.Fluent" EnablePeriodSelector="true" EnableSelector="true">
                 <StockChartCrosshairSettings Enable="true" LineType="LineType.Vertical"></StockChartCrosshairSettings>
@@ -45,6 +75,27 @@ else
                 </StockChartSeriesCollection>
             </SfStockChart>
 
+        </div>
+        
+        <div id="ControlRegion" class="@_visibilityStockChartMinute">
+        
+            <SfStockChart Title="Stock Price" Theme="Theme.Fluent" EnablePeriodSelector="true" EnableSelector="true">
+                <StockChartPeriods>
+                    <StockChartPeriod IntervalType=RangeIntervalType.Minutes Interval="5" Text='5m'></StockChartPeriod>
+                    <StockChartPeriod IntervalType=RangeIntervalType.Minutes Interval="30" Text='30m'></StockChartPeriod>
+                    <StockChartPeriod IntervalType=RangeIntervalType.Hours Interval="1" Text='1h'></StockChartPeriod>
+                    <StockChartPeriod IntervalType=RangeIntervalType.Hours Interval="12" Text='12h' Selected="true"></StockChartPeriod>
+                    <StockChartPeriod Text="1D"></StockChartPeriod>
+                 </StockChartPeriods>
+                <StockChartCrosshairSettings Enable="true" LineType="LineType.Vertical"></StockChartCrosshairSettings>
+                <StockChartTooltipSettings Enable="true" Shared="true" Format="${point.x} : ${point.y}"></StockChartTooltipSettings>
+                <StockChartSeriesCollection>
+                    <StockChartSeries DataSource="@_stockChartDetails" Type="ChartSeriesType.Candle" XName="Date" YName="Open"
+                                      High="High" Low="Low" Open="Open" Close="Close" Volume="Volume" Name="@_ticker">
+                    </StockChartSeries>
+                </StockChartSeriesCollection>
+            </SfStockChart>
+        
         </div>
         
         <div class="stockchart__form-group">
@@ -62,14 +113,28 @@ else
     private StockChartData[] _stockChartDetails;
     private StockChartInfo _stockChartInfo;
     private string _ticker;
+    private string _timeSpan = "day";
     
     private string _visibilityFavouritesButtonAdd = "stockchart__btn_visibility_none";
     private string _visibilityFavouritesButtonRemove = "stockchart__btn_visibility_none";
+    
+    private string _visibilityStockChartDay = "stockchart__btn_visibility_enable";
+    private string _visibilityStockChartMinute = "stockchart__btn_visibility_none";
+    
+    private string _visibilitySelectBoxDay = "stockchart__btn_visibility_enable";
+    private string _visibilitySelectBoxMinute = "stockchart__btn_visibility_none";
 
     protected override async Task OnInitializedAsync()
     {
+        _visibilityStockChartDay = "stockchart__btn_visibility_enable";
+        _visibilityStockChartMinute = "stockchart__btn_visibility_none";
+        
+        _visibilitySelectBoxDay = "stockchart__btn_visibility_enable";
+        _visibilitySelectBoxMinute = "stockchart__btn_visibility_none";
+        
+        _timeSpan = "day";
         _ticker = Ticker;
-        _stockChartDetails = await GetAllElements();
+        _stockChartDetails = await GetAllElements("day");
         _stockChartInfo = await GeInfo();
         await CheckOnFavourites();
     }
@@ -78,18 +143,53 @@ else
     {
         if (Ticker != _ticker)
         {
+            _visibilityStockChartDay = "stockchart__btn_visibility_enable";
+            _visibilityStockChartMinute = "stockchart__btn_visibility_none";
+            
+            _visibilitySelectBoxDay = "stockchart__btn_visibility_enable";
+            _visibilitySelectBoxMinute = "stockchart__btn_visibility_none";
+            
             _ticker = Ticker;
             _stockChartDetails = null;
             _stockChartInfo = null;
-            _stockChartDetails = await GetAllElements();
+            _stockChartDetails = await GetAllElements("day");
             _stockChartInfo = await GeInfo();
             await CheckOnFavourites();
         }
     }
 
-    private async Task<StockChartData[]> GetAllElements()
+    private async Task ChangeTimeSpan(string time)
     {
-        return await Http.GetJsonAsync<StockChartData[]>($"api/StockChart/{Ticker}:day");
+        if (_timeSpan != time)
+        {
+            if (_visibilityStockChartDay == "stockchart__btn_visibility_none")
+            {
+                _visibilityStockChartDay = "stockchart__btn_visibility_enable";
+                _visibilityStockChartMinute = "stockchart__btn_visibility_none";
+                
+                _visibilitySelectBoxDay = "stockchart__btn_visibility_enable";
+                _visibilitySelectBoxMinute = "stockchart__btn_visibility_none";
+            }
+            else
+            {
+                _visibilityStockChartDay = "stockchart__btn_visibility_none";
+                _visibilityStockChartMinute = "stockchart__btn_visibility_enable";
+                
+                _visibilitySelectBoxDay = "stockchart__btn_visibility_none";
+                _visibilitySelectBoxMinute = "stockchart__btn_visibility_enable";
+            }
+            _timeSpan = time;
+            _stockChartDetails = null;
+            _stockChartInfo = null;
+            _stockChartDetails = await GetAllElements(time);
+            _stockChartInfo = await GeInfo();
+            await CheckOnFavourites();
+        }
+    }
+
+    private async Task<StockChartData[]> GetAllElements(string time)
+    {
+        return await Http.GetJsonAsync<StockChartData[]>($"api/StockChart/{Ticker}:{time}");
     }
 
     private async Task<StockChartInfo> GeInfo()

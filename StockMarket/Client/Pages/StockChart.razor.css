@@ -3,6 +3,27 @@
     align-items: flex-start;
 }
 
+.stockchart__selectBox, .stockchart__daily {
+    display: inline-block;
+}
+
+.stockchart__selectBox{
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.stockchart__daily {
+    text-align: left;
+    bottom: 1rem;
+    width: 300px;
+    background-color: var(--first-color-lighten);
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(35,0,77,.2);
+    margin-left: 100px;
+    margin-bottom: 25px;
+}
+
 .StockChart_leftPart {
     width: 6em;
     margin-bottom: 2em;
@@ -135,6 +156,22 @@
     display: inline-block;
 }
 
+.stockchart__select {
+    background-color: snow;
+    border: 2px solid #6923D0;
+    border-radius: 15px;
+    width: 100px;
+    display: block;
+    cursor: pointer;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+.stockchart__p {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
 @media screen and (max-width: 1200px) {
     .StockChart_rightPart {
         display: none;
@@ -154,9 +191,6 @@
         margin-bottom: 0em;
         margin-top: 0;
 
-    }
-    .stockchart__btn {
-        margin-top: 0;
     }
 
     .StockChart_centerPart {
@@ -178,5 +212,10 @@
     .StockChart_link {
         font-size: 80%;
         color: #6923D0;
+    }
+    
+    .stockchart__daily {
+        font-size: 85%;
+        width: 150px;
     }
 }

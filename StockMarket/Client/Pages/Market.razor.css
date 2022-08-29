@@ -1,0 +1,28 @@
+﻿.market__status, .market__holidays {
+    bottom: 1rem;
+    background-color: var(--first-color-lighten);
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(35,0,77,.2);
+    width: 700px;
+}
+
+.market__p {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    .market__status, .market__holidays {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .market__status, .market__holidays {
+        font-size: 85%;
+        width: 400px;
+    }
+}
