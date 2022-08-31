@@ -1,6 +1,6 @@
 # Stock-Market-WEB
 
-##Implemented functionality: 
+## Implemented functionality: 
 
 1. Authorization / registration of new accounts (MSSQL, Blazor authentication)
 
