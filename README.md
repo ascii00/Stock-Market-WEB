@@ -1,5 +1,18 @@
 # Stock-Market-WEB
 
+Follow the stocks you care about most and get personalised news and alerts. Access real-time stock information and investment updates to stay on top of the market.
+--Follow stocks to get real-time quotes and personalised news
+--Discover detailed financial information
+--Compare and evaluate stocks with interactive full screen charts
+
+Manual:
+--To run the program, you will need to install your own MS SQL server create database and add connection string to the appsettings
+--After this you will need to update your database ```dotnet ef database update``` (install EF core tools, if it is not installed ```dotnet tool install -g dotnet-ef```)
+--Also, in order to have mailing enabled you will need to add your SendGrid API key to the appsettings
+
+After the following steps you are good to go. Good luck!
+
+
 ## Implemented functionality: 
 
 1. Authorization / registration of new accounts (MSSQL, Blazor authentication)
