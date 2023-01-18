@@ -38,35 +38,22 @@ After the following steps you are good to go. Good luck!
 
 ![authorization](./public/login.gif)
 
+* Ability to change password and email after account registration
 
-2. Ability to change password and email after account registration
+* Email confirmations, resend email confirmations and password reset by mail (SendGrid email provider)
 
-![img1](https://i.ibb.co/HK6NR39/4.png)
+* View basic information about the selected company and its status on the stock market
 
+![search](./public/search.gif)
 
-3. Email confirmations, resend email confirmations and password reset by mail (SendGrid email provider)
+* Get the main news about the selected companies
 
+![search](./public/news.gif)
 
-4. The ability to find a company by ticker with a hint of the name
+* Get information about the current state of the stock market
 
-![img1](https://i.ibb.co/0D9tVTD/3.png)
+* Ability to add companies to favorites list 
 
-
-5. View basic information about the selected company and its status on the stock market
-
-![img1](https://i.ibb.co/kKDs8wm/2.png)
-
-
-6. Get the main news about the selected companies
-
-![img1](https://i.ibb.co/1s69DTg/5.png)
+![search](./public/saved.gif)
 
 
-7. Get information about the current state of the stock market
-
-![img1](https://i.ibb.co/rGQPj5w/6.png)
-
-
-8. Ability to add companies to favorites list
-
-![img1](https://i.ibb.co/wWLcdY3/7.png)
