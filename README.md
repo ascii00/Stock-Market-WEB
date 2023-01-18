@@ -5,13 +5,32 @@ Follow the stocks you care about most and get personalised news and alerts. Acce
 - Discover detailed financial information
 - Compare and evaluate stocks with interactive full screen charts
 
-Manual:
-- To run the program, you will need to install your own MS SQL server create database and add connection string to the appsettings
-- After this you will need to update your database ```dotnet ef database update``` (install EF core tools, if it is not installed ```dotnet tool install -g dotnet-ef```)
-- Also, in order to have mailing enabled you will need to add your SendGrid API key to the appsettings
+## Technologies
+ - MS SQL
+ - Blazor
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Requirements
+ - MS SQL server
+ - SendGrid API Key 
+ - polygon.io API Key
+
+### Installing
+
+ - Clone the repository 
+ git clone https://github.com/ascii00/Stock-Market-WEB.git
+ - Change connection string to the database in appsettings.json on yours
+ - Also, you will need to add your SendGrid and polygon.io API keys to the appsettings.json
+ - Update the database ```dotnet ef database update``` (install EF core tools, if it is not installed ```dotnet tool install -g dotnet-ef```)
 
 After the following steps you are good to go. Good luck!
 
+## Authors
+
+- [Maksim Hrynevich](https://github.com/ascii00)
 
 ## Implemented functionality: 
 
