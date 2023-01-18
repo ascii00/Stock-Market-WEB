@@ -28,15 +28,15 @@ These instructions will get you a copy of the project up and running on your loc
 
 After the following steps you are good to go. Good luck!
 
-## Authors
+## Author
 
 - [Maksim Hrynevich](https://github.com/ascii00)
 
 ## Implemented functionality: 
 
-1. Authorization / registration of new accounts (MSSQL, Blazor authentication)
+* Authorization / registration of new accounts (MSSQL, Blazor authentication)
 
-![img1](https://i.ibb.co/DRy4F5h/1.png)
+![authorization](./public/login.gif)
 
 
 2. Ability to change password and email after account registration
